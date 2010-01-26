@@ -1,0 +1,59 @@
+* {outline: none;border: 0;margin: 0;padding: 0;}
+.cb {clear: both;}
+.hide {display: none;} /* potrzebne do javascriptu */
+td {vertical-align: top;}
+body {background: #3d3d3d ; font-family: "Trebuchet MS";}
+
+#top {height: 107px; background: url('images/pic/bg.gif')  #4395be repeat-x ;}
+#content {background: url('images/pic/bg.jpg') #4395be no-repeat left bottom ;}
+#fast {background: #f1f1f1; height: 119px;border-top: 1px solid #d5d6d7;}
+#fotter {background: url('images/pic/bgFotter.gif') repeat-x ; height: 149px;font-size: 11px; color: white;text-align: right;padding-top: 3px;}
+
+.center {width: 983px; margin: 0 auto;}
+.center .logotype {margin: 5px; float: left; width: 104px; height: 72px;}
+.center .menu {float: right; width: 841px; height: 48px;margin-top: 60px;}
+
+#content>.center { 
+	position: relative;
+}
+#loader {
+	display: none;
+	position: absolute;
+	z-index: 2;
+	top: 200px;
+	left: 378px;
+	width: 227px;
+	height: 66px;
+	background: url('images/pic/loader.png') no-repeat;
+}
+#loader span {
+	display: none;
+}
+
+
+#content .arrow_left {float: left;width: 41px; height: 468px;}
+#content .arrow_left a {display: block; width: 34px; height: 90px;background: url('images/pic/arrow_left.png'); margin-top: 200px;}
+#content .arrow_left a:hover {background-position: 0 -90px;}
+
+#content .arrow_right {float: right; width: 900px; width: 41px;height: 468px;}
+#content .arrow_right a {display: block; width: 34px; height: 90px;background: url('images/pic/arrow_right.png'); margin-top: 200px;margin-left: 6px;}
+#content .arrow_right a:hover {background-position: 0 -90px;}
+#content .arrow_left a span, #content .arrow_right a span { display: none;}
+
+#content .portfolio {float: left;}
+#content .portfolio .box { width: 900px; height: 135px;margin: 15px 0;}
+#content .portfolio .cv {margin-bottom: 30px;font-size: 12px;padding: 30px;border-right: 1px solid #7c7c7c ;border-bottom: 1px solid #7c7c7c ;background: url('images/pic/bgCv.gif') ; width: 840px;margin-top: 20px; margin-left: 41px}
+#content .portfolio .cv a {text-decoration: none; color: #ff6c00;}
+#content .portfolio .cv a:hover {text-decoration: underline;}
+#content .portfolio .cv h2 {font-size: 25px;text-align: center;margin-bottom: 20px;}
+#content .portfolio .cv .foto {float: right;}
+#content .portfolio .cv h3 {font-size: 18px;font-weight: normal;margin: 15px 0 ;} 
+#content .portfolio .cv td {padding: 2px 0;border-bottom: 1px dotted #a9a9a9;padding-right: 5px;}
+#content .portfolio .cv .kontakt td {border: 0; padding: 0 20px;vertical-align: top;}
+#content .portfolio .cv .kontakt td h3 {margin: 0;margin-bottom: 10px;}
+#content .portfolio .cv .kontakt input {margin-bottom: 10px;border: 1px solid #c1c1c1 ;font-size: 12px;padding: 3px;width: 190px;}
+#content .portfolio .cv .kontakt textarea {height: 300px;border: 1px solid #c1c1c1 ;font-size: 12px;padding: 3px;width: 560px;}
+
+#content .pagination {text-align: center;margin-bottom: 10px;}
+#content .pagination a {color: black; text-decoration: none; background: white; padding: 1px 4px;border: 1px solid gray;font-size: 11px;}
+#content .pagination a:hover {color: white; background: black;}

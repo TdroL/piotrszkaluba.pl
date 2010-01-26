@@ -1,0 +1,16 @@
+<?php defined('SYSPATH') or die('No direct script access.'); ?>
+
+2010-01-09 15:48:24 --- ERROR: Kohana_View_Exception [ 0 ]: strona "img/cvFoto.png" nie istnieje ~ APPPATH/classes\controller\public\pages.php [ 10 ]
+2010-01-09 15:48:38 --- ERROR: Kohana_View_Exception [ 0 ]: strona "img/cvFoto.png" nie istnieje ~ APPPATH/classes\controller\public\pages.php [ 10 ]
+2010-01-09 15:48:43 --- ERROR: Kohana_View_Exception [ 0 ]: strona "img/cvFoto.png" nie istnieje ~ APPPATH/classes\controller\public\pages.php [ 10 ]
+2010-01-09 21:13:08 --- ERROR: ErrorException [ 8 ]: Trying to get property of non-object ~ APPPATH/classes\controller\public\images.php [ 39 ]
+2010-01-09 21:13:23 --- ERROR: ErrorException [ 4096 ]: Object of class Controller_Public_Images could not be converted to string ~ APPPATH/classes\controller\public\images.php [ 39 ]
+2010-01-09 21:43:36 --- ERROR: ErrorException [ 8 ]: Undefined index: directory ~ APPPATH/classes\route.php [ 27 ]
+2010-01-09 21:43:44 --- ERROR: ErrorException [ 2 ]: array_key_exists() expects parameter 2 to be array, string given ~ APPPATH/classes\route.php [ 27 ]
+2010-01-09 21:51:34 --- ERROR: ErrorException [ 2048 ]: Accessing static property Request::$is_ajax as non static ~ APPPATH/classes\controller\template.php [ 37 ]
+2010-01-09 21:51:48 --- ERROR: Kohana_View_Exception [ 0 ]: You must set the file to use within your view before rendering ~ SYSPATH/classes\kohana\view.php [ 299 ]
+2010-01-09 22:07:30 --- ERROR: ErrorException [ 8 ]: Undefined variable: result_assoc ~ APPPATH/classes\route.php [ 26 ]
+2010-01-09 22:38:24 --- ERROR: Kohana_View_Exception [ 0 ]: strona "view/web/[object Object]" nie istnieje ~ APPPATH/classes\controller\public\pages.php [ 10 ]
+2010-01-09 22:39:55 --- ERROR: Kohana_View_Exception [ 0 ]: strona "view/web/[object Object]" nie istnieje ~ APPPATH/classes\controller\public\pages.php [ 10 ]
+2010-01-09 22:40:09 --- ERROR: Kohana_View_Exception [ 0 ]: strona "view/web/[object Object]" nie istnieje ~ APPPATH/classes\controller\public\pages.php [ 10 ]
+2010-01-09 22:40:44 --- ERROR: Kohana_View_Exception [ 0 ]: strona "view/web/[object Object]" nie istnieje ~ APPPATH/classes\controller\public\pages.php [ 10 ]

@@ -1,0 +1,15 @@
+<?php defined('SYSPATH') or die('No direct script access.'); ?>
+
+2010-01-12 14:06:44 --- ERROR: ErrorException [ 2 ]: md5_file(D:\httpd\WIP\morgin\media/images/web/small/) [function.md5-file]: failed to open stream: No such file or directory ~ APPPATH/classes\controller\protected\images.php [ 132 ]
+2010-01-12 14:14:23 --- ERROR: ErrorException [ 2 ]: md5_file(D:\httpd\WIP\morgin\media/images/web/big/okladka wizualizacja.jpg) [function.md5-file]: failed to open stream: No such file or directory ~ APPPATH/classes\controller\protected\images.php [ 133 ]
+2010-01-12 14:29:51 --- ERROR: ErrorException [ 2 ]: Invalid argument supplied for foreach() ~ MODPATH/orm\classes\kohana\orm.php [ 534 ]
+2010-01-12 14:48:57 --- ERROR: ErrorException [ 2 ]: var_dump() expects at least 1 parameter, 0 given ~ APPPATH/classes\model\image.php [ 66 ]
+2010-01-12 14:49:06 --- ERROR: Kohana_Exception [ 0 ]: Invalid method errors called in Model_Image ~ MODPATH/orm\classes\kohana\orm.php [ 296 ]
+2010-01-12 15:31:25 --- ERROR: ErrorException [ 8 ]: Undefined index:  prepend ~ APPPATH/classes\controller\protected\images.php [ 126 ]
+2010-01-12 16:14:56 --- ERROR: ErrorException [ 8 ]: Undefined index: connection ~ MODPATH/database\classes\kohana\database\mysql.php [ 69 ]
+2010-01-12 16:15:01 --- ERROR: ErrorException [ 8 ]: Undefined index: id ~ MODPATH/orm\classes\kohana\orm.php [ 1356 ]
+2010-01-12 16:15:29 --- ERROR: ErrorException [ 8 ]: Undefined index: connection ~ MODPATH/database\classes\kohana\database\mysql.php [ 69 ]
+2010-01-12 16:15:41 --- ERROR: ErrorException [ 8 ]: Undefined index:  require ~ APPPATH/classes\model\image.php [ 89 ]
+2010-01-12 16:16:54 --- ERROR: ErrorException [ 8 ]: Undefined index: connection ~ MODPATH/database\classes\kohana\database\mysql.php [ 69 ]
+2010-01-12 16:18:00 --- ERROR: ErrorException [ 8 ]: Undefined index: connection ~ MODPATH/database\classes\kohana\database\mysql.php [ 69 ]
+2010-01-12 16:18:03 --- ERROR: ErrorException [ 8 ]: Undefined index: id ~ MODPATH/orm\classes\kohana\orm.php [ 1356 ]
