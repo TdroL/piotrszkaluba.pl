@@ -93,7 +93,6 @@ Kohana::modules(array(
 	 'database'   => MODPATH.'database',   	// Database access
 	 'orm'        => MODPATH.'orm',        	// Object Relationship Mapping
 	 'pagination' => MODPATH.'pagination', 	// Paging of results
-	 'user'		  => MODPATH.'user',		// User Object
 	));
 	
 Kohana::$log->attach(new FirePHP_Log_Console());

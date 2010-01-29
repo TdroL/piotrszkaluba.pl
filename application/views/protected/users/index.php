@@ -35,7 +35,7 @@
 						<td<?php if($field == 'username') echo ' class="imp_yel"' ?>><?php echo $v->username ?></td>
 						<td class="imp_blue">
 							<a href="<?php echo url::site('admin/users/edit/'.$v->id) ?>"><?php echo html::image('media/admin/img/edit.png', array('alt' => 'Edytuj', 'title' => 'Edytuj')) ?></a>
-<?php if($v->id != $user->id): ?>
+<?php if($v->id != $auth->id): ?>
 							<a href="<?php echo url::site('admin/users/del/'.$v->id) ?>"><?php echo html::image('media/admin/img/erese.png', array('alt' => 'Usuń', 'title' => 'Usuń')) ?></a>
 <?php else: ?>
 							<?php echo html::image('media/admin/img/erese.png', array('alt' => 'Usuń', 'title' => 'Usuń')) ?>

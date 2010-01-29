@@ -8,7 +8,7 @@
 	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
 	<meta http-equiv="content-language" content="pl" />
 	<?php echo html::style('media/admin/style.css') ?>
-	<?php echo html::script('media/js/jquery-1.4.min.js') ?>
+	<?php echo html::script('media/js/jquery-1.4.1.min.js') ?>
 </head>
 <body>
 	<div id="all">
@@ -20,7 +20,7 @@
 				<a href="<?php echo url::site('admin/main') ?>" class="home">
 					<?php echo html::image('media/admin/img/panel_title.png') ?>
 				</a><br />
-				Jesteś zalogowany jako: <?php echo $user->nick ?>
+				Jesteś zalogowany jako: <?php echo $auth->nick ?>
 				<a href="<?php echo url::site('admin/logout') ?>">WYLOGUJ</a>
 			</div>
 			<div class="cb"></div>
@@ -41,7 +41,7 @@
 					foreach($links as $k => $v)
 					{
 						$role = explode('/', $k);
-						if($user->has($role[1]))
+						if($auth->has_role($role[1]))
 						{
 							$links[$k] = '<a href="'.url::site($k).'">'.$v.'</a>';
 						}

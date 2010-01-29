@@ -1,10 +1,7 @@
-
+.gitignore
+/application/logs
+/application/cache
 /new
 /_backups
 /db
 /system
-/modules/console
-/modules/image
-/modules/userguide
-/modules/zend
-/modules/sprig

@@ -13,10 +13,10 @@
 			<div class="cb"></div>
 			<div class="content">
 				<ul>
-<?php if($user->has('images')): ?>
+<?php if($auth->has_role('images')): ?>
 					<li><a href="<?php echo url::site('admin/images/add') ?>">Dodaj obrazek</a></li>
 <?php endif ?>
-<?php if($user->has('categories')): ?>
+<?php if($auth->has_role('categories')): ?>
 					<li><a href="<?php echo url::site('admin/categories/add') ?>">Dodaj kategorię</a></li>
 <?php endif ?>
 				</ul>
