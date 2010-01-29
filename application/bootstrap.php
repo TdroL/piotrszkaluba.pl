@@ -94,7 +94,12 @@ Kohana::modules(array(
 	 'orm'        => MODPATH.'orm',        	// Object Relationship Mapping
 	 'pagination' => MODPATH.'pagination', 	// Paging of results
 	));
-	
+
+if(is_file(APPPATH.'base.php'))
+{
+	require APPPATH.'base.php';
+}
+
 Kohana::$log->attach(new FirePHP_Log_Console());
 
 /**
