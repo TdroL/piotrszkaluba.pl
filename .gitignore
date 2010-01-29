@@ -1,6 +1,3 @@
-.gitignore
-/application/logs
-/application/cache
 /new
 /_backups
 /db
