@@ -20,6 +20,9 @@ class Model_Image extends ORM
 		'title'	=> array(
 			'not_empty'		=> NULL,
 		),
+		'category_id' => array(
+			'not_empty'		=> NULL,
+		),
 	);
 	
 	protected $_callbacks = array(

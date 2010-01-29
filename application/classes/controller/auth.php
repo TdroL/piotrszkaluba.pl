@@ -10,11 +10,11 @@ class Controller_Auth extends Controller_Template
 		parent::before();
 		$this->auth = Auth::instance();
 		
-		$role = $this->request->action; // default role
-
-		if(array_key_exists($role, $this->_access)) // for only this one action
+		$role = $this->request->controller; // default role
+		$action = $this->request->action;
+		if(array_key_exists($action, $this->_access)) // for only this one action
 		{
-			$role = $this->_access[$role];
+			$role = $this->_access[$action];
 		}
 		else if(in_array(TRUE, array_keys($this->_access))) // for all actions
 		{

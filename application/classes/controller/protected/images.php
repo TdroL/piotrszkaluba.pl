@@ -16,7 +16,7 @@ class Controller_Protected_Images extends Controller_Auth
 		
 		$images = ORM('image')->with('category');
 		
-		if($only !== FALSE)
+		if(!empty($only))
 		{
 			$images->where('category.link', '=', $only);
 		}

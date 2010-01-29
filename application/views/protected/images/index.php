@@ -6,7 +6,7 @@
 		<br />
 		<b>Kategorie:</b>
 		<ul class="categories_list">
-			<li><a href="<?php echo url::uri(array('category' => NULL, 'field' => NULL, 'sort' => NULL)) ?>" class="all">Wszystko</a></li>
+			<li><a href="<?php echo url::uri(array('category' => NULL, 'field' => NULL, 'sort' => NULL)) ?>" class="all">Pokaż wszystko</a></li>
 <?php foreach($categories as $v): ?>
 			<li><a href="<?php echo url::uri(array('category' => $v->link, 'field' => NULL, 'sort' => NULL)) ?>"><?php echo ($category == $v->link ? '<b>'.$v->title.'</b>' : $v->title) ?></a></li>
 <?php endforeach ?>

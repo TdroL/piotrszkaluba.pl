@@ -146,7 +146,7 @@ class Controller_Protected_Users extends Controller_Auth
 		$id = $this->param('id');
 		$user = ORM('user')->find($id);
 
-		if(!$user->loaded() or $id == $this->user->id or ORM('user')->count_all() < 2)
+		if(!$user->loaded() or $id == $this->auth->id or ORM('user')->count_all() < 2)
 		{
 			$this->request->redirect('admin/users');
 		}

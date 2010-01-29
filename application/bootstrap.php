@@ -164,6 +164,7 @@ if (!Route::cache())
 			'action' 	 => 'index',
 			'field'		 => NULL,
 			'position'	 => NULL,
+			'category'	 => NULL,
 		));
 	
 	Route::set('images', 'view/<category>(/<page>)', 
