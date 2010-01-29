@@ -2,7 +2,10 @@
 
 class Controller_Protected_Logs extends Controller_Auth
 {
-	public $override = 'admin';
+	protected $_access = array(
+		TRUE => 'admin'
+	);
+	
 	public $no_template = array('list');
 	
 	public function action_index()

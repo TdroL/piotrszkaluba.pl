@@ -2,8 +2,11 @@
 
 class Controller_Protected_Main extends Controller_Auth
 {
-	public $override = 'login';
-	public $allow = array('login');
+	protected $_access = array(
+		'login' => NULL,
+		TRUE => 'login'
+	);
+	
 	public $no_view = array('is_logged', 'logout');
 	public $no_template = array('login');
 
@@ -14,7 +17,7 @@ class Controller_Protected_Main extends Controller_Auth
 
 	public function action_login()
 	{
-		$this->user->logged and $this->auth->logout();
+		$this->auth->logged_in() and $this->auth->logout();
 
 		if(isset($_POST['username'], $_POST['password']) and $this->session->get('lock_time', time()) <= time())
 		{
@@ -23,10 +26,6 @@ class Controller_Protected_Main extends Controller_Auth
 				$this->session->delete('login_tries');
 				$this->session->delete('lock_time');
 				$this->session->set('authenticated_user', TRUE);
-				$referrer = $this->session->get('referrer', 'admin/main');
-
-				$referrer == 'admin/logout' and $referrer = 'admin/main';
-				$referrer == 'admin/login' and $referrer = 'admin/main';
 
 				$this->request->redirect('admin/main'); // $referrer
 			}
@@ -45,7 +44,7 @@ class Controller_Protected_Main extends Controller_Auth
 
 	public function action_is_logged()
 	{
-		if(!$this->user->logged)
+		if(!$this->auth->logged_in())
 		{
 			$this->request->redirect('admin/login'); // die
 		}

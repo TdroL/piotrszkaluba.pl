@@ -2,8 +2,11 @@
 
 class Controller_Protected_Users extends Controller_Auth
 {
-	public $override = 'admin';
-	public $allow = array('last');
+	protected $_access = array(
+			'last' => 'login',
+			TRUE => 'admin',
+	);
+	
 	public $no_template = array('last');
 	public $no_view = array('deactivate', 'activate');
 	
