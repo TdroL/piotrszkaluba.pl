@@ -59,7 +59,6 @@ class Model_Image extends ORM
 			return FALSE;
 		}
 		
-		$array['require'] = utf8::strtolower($category->require);
 		return TRUE;
 	}
 

@@ -29,21 +29,20 @@ CREATE TABLE IF NOT EXISTS `categories` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `title` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
   `link` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
-  `require` varchar(32) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `link` (`link`),
   UNIQUE KEY `link_2` (`link`),
   UNIQUE KEY `link_3` (`link`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
 
 --
 -- Zrzut danych tabeli `categories`
 --
 
-INSERT INTO `categories` (`id`, `title`, `link`, `require`) VALUES
-(1, 'Web', 'web', 'url'),
-(2, 'Picture', 'picture', NULL),
-(3, 'Draw', 'draw', NULL);
+INSERT INTO `categories` (`id`, `title`, `link`) VALUES
+(1, 'Web', 'web'),
+(2, 'Picture', 'picture'),
+(3, 'Draw', 'draw');
 
 -- --------------------------------------------------------
 
