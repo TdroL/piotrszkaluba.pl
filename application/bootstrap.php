@@ -108,6 +108,7 @@ Kohana::$log->attach(new FirePHP_Log_Console());
  */
 if (!Route::cache())
 {
+	// ----------- ADMIN ----------- //
 	Route::set('login', 'admin/login')
 		->defaults(array(
 			'directory'  => 'protected',
@@ -172,6 +173,8 @@ if (!Route::cache())
 			'category'	 => NULL,
 		));
 	
+	// ----------- ADMIN - END ----------- //
+	
 	Route::set('images', 'view/<category>(/<page>)', 
 		array(
 			'page' => '\d+',
@@ -192,6 +195,13 @@ if (!Route::cache())
 			'directory'  => 'public',
 			'controller' => 'pages',
 			'action'     => 'index',
+		));
+	
+	Route::set('contact-email', 'contact/send')
+		->defaults(array(
+			'directory'  => 'public',
+			'controller' => 'pages',
+			'action'     => 'send',
 		));
 	
 	Route::set('default', '(<page>)',

@@ -22,6 +22,8 @@ class Controller_Public_Pages extends Controller_Template
 		$this->content->page->content = preg_replace_callback('/\{(?<command>[^ \}]+)(?: (?<param>[^\}]+))?\}/im', array($this, 'inline_commands'), $this->content->page->content);
 	}
 	
+	
+	
 	public function inline_commands($matches)
 	{
 		if(isset($matches['command']))
