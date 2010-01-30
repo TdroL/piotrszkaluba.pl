@@ -1,3 +1,6 @@
 [submodule "system"]
 	path = system
 	url = git://github.com/kohana/core.git
+[submodule "modules/firephp"]
+	path = modules/firephp
+	url = git://github.com/jeremyf76/KO3_FirePHP.git

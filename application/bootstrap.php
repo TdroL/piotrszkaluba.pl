@@ -271,12 +271,7 @@ echo $request->response;
 if(defined('ADMIN_LOGGED') and class_exists('FirePHP_Profiler'))
 {
 	FirePHP_Profiler::instance()
-		->group('KO3 FirePHP Application Profiler')
-		->post()
-		->get()
-		->session()
-		->cookie()
+		->superglobals()
 		->database()
-		->benchmark()
-		->groupEnd();
+		->benchmark();
 }
