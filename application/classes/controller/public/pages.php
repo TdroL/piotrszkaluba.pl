@@ -14,9 +14,9 @@ class Controller_Public_Pages extends Controller_Template
 			usage:
 			{command( param)}
 			example:
-			{send contact/send}
-			 ^--^ ^----------^
-			command  param
+			{send contact/send} => url::site('contact/send')
+			 ^--^ ^----------^     ^-----------------------^
+			command  param                  result
 		*/
 		
 		$this->content->page->content = preg_replace_callback('/\{(?<command>[^ ]+)(?: (?<param>[^\}]+))?\}/im', array($this, 'inline_commands'), $this->content->page->content);
