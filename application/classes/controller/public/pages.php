@@ -10,6 +10,15 @@ class Controller_Public_Pages extends Controller_Template
 			throw new Kohana_View_Exception('page ":link" does not exists', array(':link' => $pages));
 		}
 
+		/* Commands
+			usage:
+			{command( param)}
+			example:
+			{send contact/send}
+			 ^--^ ^----------^
+			command  param
+		*/
+		
 		$this->content->page->content = preg_replace_callback('/\{(?<command>[^ ]+)(?: (?<param>[^\}]+))?\}/im', array($this, 'inline_commands'), $this->content->page->content);
 	}
 	
