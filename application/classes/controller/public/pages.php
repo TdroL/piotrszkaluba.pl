@@ -76,7 +76,7 @@ class Controller_Public_Pages extends Controller_Template
 					}
 					
 					$this->session->set($_POST['sand'], TRUE);
-					$post->sand	= html::sand();
+					$post->sand = html::sand();
 					$this->content->success = TRUE;
 				}
 				catch(Exception $e)
