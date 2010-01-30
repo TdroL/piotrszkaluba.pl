@@ -16,6 +16,7 @@ body {background: #3d3d3d ; font-family: "Trebuchet MS";}
 #content>.center { 
 	position: relative;
 }
+
 #loader {
 	display: none;
 	position: absolute;
@@ -57,3 +58,26 @@ body {background: #3d3d3d ; font-family: "Trebuchet MS";}
 #content .pagination {text-align: center;margin-bottom: 10px;}
 #content .pagination a {color: black; text-decoration: none; background: white; padding: 1px 4px;border: 1px solid gray;font-size: 11px;}
 #content .pagination a:hover {color: white; background: black;}
+
+ul.error, div.success {
+	font-size: 14px;
+	margin-bottom: 10px;
+}
+
+ul.error {
+	border: 1px solid #f00;
+	background: #ffb3b3 url('images/pic/bg_error.png') right top no-repeat;
+	padding: 5px 80px 5px 35px;
+}
+ul.error li {
+	font-weight: bold;
+	color: #b70100;
+}
+
+div.success {
+	background: #8eff82 url('images/pic/bg_success.png') right center no-repeat; 
+	border: 1px solid #00d300;
+	color: #057100;
+	font-weight: bold;
+	padding: 5px 80px 5px 35px;
+}

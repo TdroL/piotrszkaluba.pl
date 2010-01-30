@@ -187,6 +187,13 @@ if (!Route::cache())
 			'page'		 => 1,
 		));
 	
+	Route::set('contact', 'contact')
+		->defaults(array(
+			'directory'  => 'public',
+			'controller' => 'pages',
+			'action'     => 'contact',
+		));
+	
 	Route::set('pages', '<page>', 
 		array(
 			'page' => '[^\d(ajax)].+'
@@ -195,13 +202,6 @@ if (!Route::cache())
 			'directory'  => 'public',
 			'controller' => 'pages',
 			'action'     => 'index',
-		));
-	
-	Route::set('contact-email', 'contact/send')
-		->defaults(array(
-			'directory'  => 'public',
-			'controller' => 'pages',
-			'action'     => 'send',
 		));
 	
 	Route::set('default', '(<page>)',

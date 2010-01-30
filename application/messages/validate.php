@@ -26,4 +26,5 @@ return array(
 	'email_available'		=> ':field must be unique',
 	'validate::email'		=> ':field must be a valid email',
 	'internal_error'		=> 'Internal error: :param1',
+	'swiftmailer_error'		=> 'Server could not send your mail, please try again later',
 );

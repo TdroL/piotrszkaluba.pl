@@ -58,6 +58,11 @@ class FormFields implements ArrayAccess, Iterator
 		// można bylo print_r, ale...
 	}
 	
+	public function clear()
+	{
+		$this->_data = array();
+	}
+	
 	public function set($post = array())
 	{
 		if($post instanceof Validate)

@@ -92,4 +92,19 @@ class Validate extends Kohana_Validate
 
 		return $messages;
 	}
+	
+	public function fields($fields)
+	{
+		$file = $fields;
+		$path = NULL;
+		
+		if(strpos($fields, '.', 1))
+		{
+			list($file, $path) = explode('.', $fields, 2);
+		}
+		
+		$fields = Kohana::message($file, $path);
+		
+		return parent::labels($fields);
+	}
 } // End Validation

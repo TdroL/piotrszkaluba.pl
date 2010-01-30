@@ -31,12 +31,13 @@ return array(
 	'Email'				=> 'Email',
 	'Access'			=> 'Dostęp',
 	// messages
-	'No images'						=> 'Brak obrazków w tej kategorii',
-
+	'No images'							=> 'Brak obrazków w tej kategorii',
+	'Portfolio: contact from :email'	=> 'Portfolio: kontakt od :email',
+	
 	// errors
 	'Internal error: :param1'			=> 'Wystąpił błąd serwera: :param1',
-	'page ":link" does not exists'	=> 'strona ":link" nie istnieje',
-	':field must not be empty'		=> 'Pole :field nie może być puste',
+	'page ":link" does not exists'		=> 'strona ":link" nie istnieje',
+	':field must not be empty'			=> 'Pole :field nie może być puste',
 	':field must be the same as :param1'					=> 'Pole :field musi być takie samo jak pole :param1',
 	':field does not match the required format'				=> 'Pole :field nie pasuje so formatu',
 	':field must be exactly :param1 characters long'		=> 'Pole :field musi mieć :param1 znaków',
@@ -58,4 +59,5 @@ return array(
 	':field must be unique'								=> 'Pole :field musi być unikalne - taka wartość już istnieje',
 	':field must contain only letters, digits, dashes and underscores characters'	=> 'Pole :field może zawierać jedynie litery (bez polskich znaków), cyfry, myślniki i pokreślenia',
 	':field must be a valid email'						=> 'Pole :field musi być poprawnym adresem email',
+	'Server could not send your mail, please try again later'	=> 'Serwer nie mógł wysłać twojej wiadomości, spróbuj ponownie później',
 );
