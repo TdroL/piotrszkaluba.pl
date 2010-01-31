@@ -166,7 +166,7 @@ if (!Route::cache())
 			'sort'		=> 'desc|asc',
 		))
 		->defaults(array(
-			'directory'  => 'protected',
+			'directory'	 => 'protected',
 			'controller' => 'main',
 			'action' 	 => 'index',
 			'field'		 => NULL,
