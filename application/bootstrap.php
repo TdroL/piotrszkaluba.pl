@@ -179,7 +179,6 @@ if (!Route::cache())
 	Route::set('images', 'view/<category>(/<page>)', 
 		array(
 			'page'			=> '\d+',
-			'ajax'			=> 'ajax',
 		))
 		->defaults(array(
 			'directory'		=> 'public',
@@ -197,7 +196,7 @@ if (!Route::cache())
 	
 	Route::set('pages', '<page>', 
 		array(
-			'page'			=> '[^\d(ajax)].+'
+			'page'			=> '[^\d].+'
 		))
 		->defaults(array(
 			'directory'		=> 'public',
