@@ -112,109 +112,109 @@ if (!Route::cache())
 	// ----------- ADMIN ----------- //
 	Route::set('login', 'admin/login')
 		->defaults(array(
-			'directory'  => 'protected',
-			'controller' => 'main',
-			'action' 	 => 'login',
+			'directory'		=> 'protected',
+			'controller'	=> 'main',
+			'action'		=> 'login',
 		));
 	
 	Route::set('logout', 'admin/logout')
 		->defaults(array(
-			'directory'  => 'protected',
-			'controller' => 'main',
-			'action' 	 => 'logout',
+			'directory'		=> 'protected',
+			'controller'	=> 'main',
+			'action'		=> 'logout',
 		));
 	
 	Route::set('admin-is-logged', 'admin/is_logged')
 		->defaults(array(
-			'directory'  => 'protected',
-			'controller' => 'main',
-			'action' 	 => 'is_logged',
+			'directory'		=> 'protected',
+			'controller'	=> 'main',
+			'action'		=> 'is_logged',
 		));
 	
 	Route::set('admin-main', 'admin/main')
 		->defaults(array(
-			'directory'  => 'protected',
-			'controller' => 'main',
-			'action' 	 => 'index',
+			'directory'		=> 'protected',
+			'controller'	=> 'main',
+			'action'		=> 'index',
 		));
 	
 	Route::set('logs_list', 'admin/logs/list(/<path>)', 
 		array(
-			'path'		=> '[0-9\/]+(?:\.php)?',
+			'path' 			=> '[0-9\/]+(?:\.php)?',
 		))
 		->defaults(array(
-			'directory'  => 'protected',
-			'controller' => 'logs',
-			'action' 	 => 'list',
+			'directory'		=> 'protected',
+			'controller'	=> 'logs',
+			'action'		=> 'list',
 		));
 	
 	Route::set('logs', 'admin/logs(/<path>)', 
 		array(
-			'path'		=> '[0-9\/]+(?:\.php)?',
+			'path'			=> '[0-9\/]+(?:\.php)?',
 		))
 		->defaults(array(
-			'directory'  => 'protected',
-			'controller' => 'logs',
-			'action' 	 => 'index',
+			'directory'		=> 'protected',
+			'controller'	=> 'logs',
+			'action'		=> 'index',
 		));
 	
 	Route::set('admin', 'admin/<controller>(/<action>(.<id>))(/only/<category>)(/sort/<field>(/<sort>))(/page/<page>)', 
 		array(
-			'id'		=> '\d+',
-			'page'		=> '\d+',
-			'field'		=> '[^/]+',
-			'sort'		=> 'desc|asc',
+			'id'			=> '\d+',
+			'page'			=> '\d+',
+			'field'			=> '[^/]+',
+			'sort'			=> 'desc|asc',
 		))
 		->defaults(array(
-			'directory'	 => 'protected',
-			'controller' => 'main',
-			'action' 	 => 'index',
-			'field'		 => NULL,
-			'position'	 => NULL,
-			'category'	 => NULL,
+			'directory'		=> 'protected',
+			'controller'	=> 'main',
+			'action' 		=> 'index',
+			'field'			=> NULL,
+			'position'		=> NULL,
+			'category'		=> NULL,
 		));
 	
 	// ----------- ADMIN - END ----------- //
 	
 	Route::set('images', 'view/<category>(/<page>)', 
 		array(
-			'page' => '\d+',
-			'ajax'	=> 'ajax',
+			'page'			=> '\d+',
+			'ajax'			=> 'ajax',
 		))
 		->defaults(array(
-			'directory'  => 'public',
-			'controller' => 'images',
-			'action'     => 'index',
-			'page'		 => 1,
+			'directory'		=> 'public',
+			'controller'	=> 'images',
+			'action'		=> 'index',
+			'page'			=> 1,
 		));
 	
 	Route::set('contact', 'contact')
 		->defaults(array(
-			'directory'  => 'public',
-			'controller' => 'pages',
-			'action'     => 'contact',
+			'directory'		=> 'public',
+			'controller'	=> 'pages',
+			'action'		=> 'contact',
 		));
 	
 	Route::set('pages', '<page>', 
 		array(
-			'page' => '[^\d(ajax)].+'
+			'page'			=> '[^\d(ajax)].+'
 		))
 		->defaults(array(
-			'directory'  => 'public',
-			'controller' => 'pages',
-			'action'     => 'index',
+			'directory'		=> 'public',
+			'controller'	=> 'pages',
+			'action'		=> 'index',
 		));
 	
 	Route::set('default', '(<page>)',
 		array(
-			'page'	=> '\d*',
+			'page'			=> '\d*',
 		))
 		->defaults(array(
-			'directory'  => 'public',
-			'controller' => 'images',
-			'action'     => 'index',
-			'category'	 => NULL,
-			'page'		 => 1,
+			'directory'		=> 'public',
+			'controller'	=> 'images',
+			'action'		=> 'index',
+			'category'		=> NULL,
+			'page'			=> 1,
 		));
 	
 	// Cache the routes if in production
