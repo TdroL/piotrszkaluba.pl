@@ -3,17 +3,11 @@
 		<div class="title">
 			Dodaj konto
 		</div>
-		<?php echo form::open('admin/users/add') ?>
+		<?php echo form::open('admin/users/create') ?>
 		<div>
 			<?php echo form::hidden('sand', $post->sand) ?>
 		</div>
-<?php if(!empty($errors)): ?>
-			<ul class="error">
-<?php foreach($errors as $v): ?>
-				<li><?php echo rtrim($v, '.') ?>.</li>
-<?php endforeach ?>
-			</ul>
-<?php endif ?>
+		<?php echo html::error_messages($errors) ?>
 
 			<div class="box_1">
 				<div class="inp_1">

@@ -7,6 +7,16 @@ class HTML extends Kohana_HTML
 		return Request::factory($uri)->execute()->send_headers()->response;
 	}
 	
+	public static function error_messages($errors = array())
+	{
+		if(empty($errors))
+		{
+			return PHP_EOL;
+		}
+		
+		return View::factory('common/errors')->set('errors', $errors).PHP_EOL;
+	}
+	
 	public static function has($url, $params, $return = NULL)
 	{
 		$bool = TRUE;
@@ -37,11 +47,11 @@ class HTML extends Kohana_HTML
 		if(!array_key_exists('alt', $attributes))
 		{
 			$attributes['alt'] = $file;
-		}
-		
-		if(!array_key_exists('title', $attributes))
-		{
-			$attributes['title'] = $file;
+			
+			if(array_key_exists('title', $attributes))
+			{
+				$attributes['alt'] = $attributes['title'];
+			}
 		}
 		
 		return parent::image($file, $attributes, $index);
@@ -76,6 +86,7 @@ class HTML extends Kohana_HTML
 
 			// Add the attribute value
 			$compiled .= ' '.$key.'="'.htmlspecialchars($value, ENT_QUOTES, Kohana::$charset, FALSE).'"';
+																					// added FALSE param
 		}
 
 		return $compiled;

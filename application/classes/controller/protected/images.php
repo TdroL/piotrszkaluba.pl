@@ -2,29 +2,31 @@
 
 class Controller_Protected_Images extends Controller_Auth
 {
+	protected $_index = 'admin/images';
+
 	public function action_index()
 	{
+		$this->content->field = $this->param('field', 'date');
+		$this->content->sort = $this->param('sort', 'desc');
+		$this->content->categories = ORM('category')->find_all();
+		
 		$page = $this->param('page') - 1;
 		$page < 1 and $page = 0;
 		$limit = 20;
 		
-		$this->content->field = $this->param('field', 'date');
-		$this->content->sort = $this->param('sort', 'desc');
-		
 		$only = $this->param('category', FALSE);
 		$this->content->category = $only;
 		
-		$images = ORM('image')->with('category');
+		$orm = ORM('image')->with('category');
 		
 		if(!empty($only))
 		{
-			$images->where('category.link', '=', $only);
+			$orm->where('category.link', '=', $only);
 		}
 		
-		$count = clone $images;
-		
-		$this->content->categories = ORM('category')->find_all();
-		$this->content->images = $images->offset($page*$limit)
+		$count = clone $orm;
+
+		$this->content->images = $orm->offset($page*$limit)
 								->limit($limit)
 								->order_by($this->content->field, $this->content->sort)
 								->find_all();
@@ -35,46 +37,44 @@ class Controller_Protected_Images extends Controller_Auth
 		));
 	}
 	
-	public function action_add()
+	public function action_create()
 	{
 		$this->content->bind('post', $post);
 		$this->content->bind('errors', $errors);
 		$this->content->categories = ORM('category')->find_all();
 		
-		$post = new FormFields();
+		$post = new FormFields($_POST);
 		
 		if(!empty($_POST) and !$this->session->get($_POST['sand'], FALSE))
 		{
-			$image = ORM('image')->validate($_POST);
-			if($image->check())
+			$orm = ORM('image')->validate($_POST);
+			
+			if($orm->check())
 			{
-				$image->date = time();
-				//var_dump($image->as_array());
-				$image->save();
+				$orm->date = time();
+				$orm->save();
 				
 				$this->session->set($_POST['sand'], TRUE);
-				$this->request->redirect('admin/images');
+				$this->request->redirect($this->_index);
 			}
-			else
-			{
-				$errors = $image->errors('validate');
-				$post->override($image);
-			}
+			//else
+			$errors = $orm->errors('validate');
+			$post->set($orm);
 		}
 	}
 	
-	public function action_edit()
+	public function action_update()
 	{
 		$this->content->bind('post', $post);
 		$this->content->bind('errors', $errors);
 		$this->content->categories = ORM('category')->find_all();
 
 		$id = $this->param('id');
-		$image = ORM('image')->find($id);
+		$orm = ORM('image')->find($id);
 
-		if(!$image->loaded())
+		if(!$orm->loaded())
 		{
-			$this->request->redirect('admin/images');
+			$this->request->redirect($this->_index); // invalid id
 		}
 
 		$post = new FormFields($_POST);
@@ -82,42 +82,32 @@ class Controller_Protected_Images extends Controller_Auth
 
 		if(!empty($_POST) and !$this->session->get($_POST['sand'], FALSE))
 		{
-			$image->validate($_POST);
-			if($image->check())
+			$orm->validate($_POST);
+			if($orm->check())
 			{
-				//DB::begin();
-				//var_dump($image->as_array());
-				$image->save();
-				//var_dump($image->as_array(), $image->last_query());
+				$orm->save();
 				
-				//DB::rollback();
-				//return;
 				$this->session->set($_POST['sand'], TRUE);
-				$this->request->redirect('admin/images');
+				$this->request->redirect($this->_index);
 			}
-			else
-			{
-				$errors = $image->errors('validate');
-				$post->override($image);
-			}
+			//else
+			$errors = $orm->errors('validate');
 		}
-		else
-		{
-			$post->override($image);
-		}
+		
+		$post->set($orm);
 	}
 	
-	public function action_del()
+	public function action_delete()
 	{
 		$this->content->bind('post', $post);
 		$this->content->bind('errors', $errors);
 
 		$id = $this->param('id');
-		$image = ORM('image')->with('category')->find($id);
+		$orm = ORM('image')->with('category')->find($id);
 
-		if(!$image->loaded())
+		if(!$orm->loaded())
 		{
-			$this->request->redirect('admin/images');
+			$this->request->redirect($this->_index);
 		}
 
 		$post = new FormFields($_POST);
@@ -125,9 +115,9 @@ class Controller_Protected_Images extends Controller_Auth
 
 		if(!empty($_POST) and !$this->session->get($_POST['sand'], FALSE))
 		{
-			$images = array($image->image, $image->thumb);
+			$images = array($orm->image, $orm->thumb);
 
-			$image->delete();
+			$orm->delete();
 
 			$base = DOCROOT.'media/images/';
 			foreach($images as $v)
@@ -142,19 +132,13 @@ class Controller_Protected_Images extends Controller_Auth
 							->count_all();
 					if($count == 0)
 					{
-						unlink($file);
+						@unlink($file);
 					}
 				}
 			}
 			
-			//var_dump($image->as_array(), $image->last_query());
-			
 			$this->session->set($_POST['sand'], TRUE);
-			$this->request->redirect('admin/images');
-		}
-		else
-		{
-			$post->override($image);
+			$this->request->redirect($this->_index);
 		}
 	}
 }

@@ -3,17 +3,11 @@
 		<div class="title">
 			Usuń stronę
 		</div>
-		<?php echo form::open('admin/pages/del/'.$post->id) ?>
+		<?php echo form::open('admin/pages/delete.'.$post->id) ?>
 		<div>
 			<?php echo form::hidden('sand', $post->sand) ?>
 		</div>
-<?php if(!empty($errors)): ?>
-			<ul class="error">
-<?php foreach($errors as $v): ?>
-				<li><?php echo rtrim($v, '.') ?>.</li>
-<?php endforeach ?>
-			</ul>
-<?php endif ?>
+		<?php echo html::error_messages($errors) ?>
 
 			<div class="box_1">
 				<div class="inp_1">

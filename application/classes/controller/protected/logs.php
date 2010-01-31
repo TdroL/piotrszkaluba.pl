@@ -2,15 +2,39 @@
 
 class Controller_Protected_Logs extends Controller_Auth
 {
-	protected $_access = array(
+	public $access = array(
 		TRUE => 'admin'
 	);
 	
-	public $_no_template = array('list');
+	public $no_template = array('list');
 	
 	public function action_index()
 	{
-		$path = $this->param('path');
+		$latest = Kohana::list_files('logs');
+		$key = NULL;
+		
+		for($i = 0; $i < 3; $i++)
+		{
+			$keys = array_keys($latest); // by years
+			
+			if(empty($keys))
+			{
+				$key = NULL;
+				break;
+			}
+			
+			natsort($keys);
+			$key = array_pop($keys);
+			$latest = $latest[$key];
+		}
+		
+		if(!empty($key))
+		{
+			$key = str_replace(array('\\', 'logs'), array('/', NULL), $key);
+			$key = trim($key, '/');
+		}
+		
+		$path = $this->param('path', $key);
 		$this->content->path = $path;
 		$this->content->bind('file', $file);
 		
@@ -51,11 +75,11 @@ class Controller_Protected_Logs extends Controller_Auth
 
 		$active = $this->param('path');
 		
+		// Create directory array
+		$dir = array();
+		
 		if( $logs )
 		{
-			// Create directory array
-			$dir = array();
-
 			krsort($logs);
 
 			foreach( $logs as $years => $months )
@@ -77,10 +101,10 @@ class Controller_Protected_Logs extends Controller_Auth
 				}
 
 			}
-
-			$this->content->dir = $dir;
-			$this->content->active = $active;
 		}
+		
+		$this->content->dir = $dir;
+		$this->content->active = $active;
 	}
 	
 	public static function get_month($month)

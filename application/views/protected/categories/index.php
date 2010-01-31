@@ -1,6 +1,6 @@
 <div class="columns_1">
 	<div class="column">
-		<?php echo html::anchor('admin/categories/add', 'Dodaj kategorię', array('class' => 'add')); ?>
+		<?php echo html::anchor('admin/categories/create', 'Dodaj kategorię', array('class' => 'add')); ?>
 		<br />
 		<br />
 		<div>
@@ -30,8 +30,8 @@
 							<a href="<?php echo url::site('admin/categories/index/only/'. $v->link) ?>" title="Pokaż obrazki z kategori: <?php echo $v->title ?>"><?php echo $v->images->count_all() ?></a>
 						</td>
 						<td class="imp_blue">
-							<a href="<?php echo url::site('admin/categories/edit/'.$v->id) ?>"><?php echo html::image('media/admin/img/edit.png', array('alt' => 'Edytuj', 'title' => 'Edytuj')) ?></a>
-							<a href="<?php echo url::site('admin/categories/del/'.$v->id) ?>"><?php echo html::image('media/admin/img/erese.png', array('alt' => 'Usuń', 'title' => 'Usuń')) ?></a>
+							<a href="<?php echo url::site('admin/categories/update.'.$v->id) ?>"><?php echo html::image('media/admin/img/edit.png', array('title' => 'Edytuj')) ?></a>
+							<a href="<?php echo url::site('admin/categories/delete.'.$v->id) ?>"><?php echo html::image('media/admin/img/erese.png', array('title' => 'Usuń')) ?></a>
 					</tr>
 <?php endforeach ?>
 				</tbody>

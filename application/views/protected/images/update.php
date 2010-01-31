@@ -1,19 +1,13 @@
 <div class="columns_1">
 	<div class="column">
 		<div class="title">
-			Dodaj obrazek
+			Edytuj obrazek
 		</div>
-		<?php echo form::open('admin/images/add', array('enctype' => 'multipart/form-data')) ?>
+		<?php echo form::open('admin/images/update.'.$post->id, array('enctype' => 'multipart/form-data')) ?>
 		<div>
 			<?php echo form::hidden('sand', $post->sand) ?>
 		</div>
-<?php if(!empty($errors)): ?>
-			<ul class="error">
-<?php foreach($errors as $v): ?>
-				<li><?php echo rtrim($v, '.') ?>.</li>
-<?php endforeach ?>
-			</ul>
-<?php endif ?>
+		<?php echo html::error_messages($errors) ?>
 
 			<div class="box_1">
 				<div class="inp_1">
@@ -161,7 +155,7 @@
 			</div>
 			
 			<div>
-				<?php echo form::submit('send', 'Dodaj') ?>
+				<?php echo form::submit('send', 'Zatwierdź zmiany') ?>
 			</div>
 		<?php echo form::close() ?>
 		<div class="cb"></div>

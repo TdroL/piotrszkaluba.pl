@@ -3,17 +3,11 @@
 		<div class="title">
 			Edytuj konto
 		</div>
-		<?php echo form::open('admin/users/edit/'.$post->id) ?>
+		<?php echo form::open('admin/users/update.'.$post->id) ?>
 		<div>
 			<?php echo form::hidden('sand', $post->sand) ?>
 		</div>
-<?php if(!empty($errors)): ?>
-			<ul class="error">
-<?php foreach($errors as $v): ?>
-				<li><?php echo rtrim($v, '.') ?>.</li>
-<?php endforeach ?>
-			</ul>
-<?php endif ?>
+		<?php echo html::error_messages($errors) ?>
 
 			<div class="box_1">
 				<div class="inp_1">

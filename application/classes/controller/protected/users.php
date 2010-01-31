@@ -2,13 +2,15 @@
 
 class Controller_Protected_Users extends Controller_Auth
 {
-	protected $_access = array(
+	protected $_index = 'admin/users';
+
+	public $access = array(
 			'last' => 'login',
 			TRUE => 'admin',
 	);
 	
-	public $_no_template = array('last');
-	public $_no_view = array('deactivate', 'activate');
+	public $no_template = array('last');
+	public $no_view = array('deactivate', 'activate');
 	
 	public function action_index()
 	{
@@ -24,7 +26,7 @@ class Controller_Protected_Users extends Controller_Auth
 		$this->content->login = ORM('role', array('name' => 'login'));
 	}
 	
-	public function action_add()
+	public function action_create()
 	{
 		$this->content->bind('post', $post);
 		$this->content->bind('errors', $errors);
@@ -35,52 +37,47 @@ class Controller_Protected_Users extends Controller_Auth
 		if(!empty($_POST) and !$this->session->get($_POST['sand'], FALSE))
 		{
 			DB::begin();
-			$user = ORM('user')->validate($_POST);
-			if($user->check())
+			$orm = ORM('user')->validate($_POST);
+			if($orm->check())
 			{
 				try
 				{
-					$user->save();
+					$orm->save();
 
 					if(!empty($_POST['roles'])) foreach($_POST['roles'] as $k => $v)
 					{
-						$user->add('roles', ORM('role', array('name' => $v)));
+						$orm->add('roles', ORM('role', array('name' => $v)));
 					}
 
 					DB::commit();
 					
 					$this->session->set($_POST['sand'], TRUE);
-					$this->request->redirect('admin/users');
+					$this->request->redirect($this->_index);
 				}
 				catch(Exception $e)
 				{
 					DB::rollback();
-					
-					$user->error('server', 'internal_error', array($e->getMessage()));
-					$errors = $user->errors('validate');
-					$post->override($user);
+					$orm->error('server', 'internal_error', array($e->getMessage()));
 				}
 			}
-			else
-			{
-				$errors = $user->errors('validate');
-				$post->override($user);
-			}
+			//else, catch
+			$errors = $orm->errors('validate');
+			$post->set($orm);
 		}
 	}
 	
-	public function action_edit()
+	public function action_update()
 	{
 		$this->content->bind('post', $post);
 		$this->content->bind('errors', $errors);
 		$this->content->roles = ORM('role')->find_all();
 
 		$id = $this->param('id');
-		$user = ORM('user')->with('role')->find($id);
+		$orm = ORM('user')->with('role')->find($id);
 
-		if(!$user->loaded())
+		if(!$orm->loaded())
 		{
-			$this->request->redirect('admin/users');
+			$this->request->redirect($this->_index);
 		}
 
 		$post = new FormFields($_POST);
@@ -88,46 +85,44 @@ class Controller_Protected_Users extends Controller_Auth
 
 		if(!empty($_POST) and !$this->session->get($_POST['sand'], FALSE))
 		{
-			$user->validate($_POST, array('password', 'password_confirm'));
-			if($user->check())
+			$orm->validate($_POST, array('password', 'password_confirm'));
+			if($orm->check())
 			{
-				$user->save();
+				$orm->save();
 				
 				if(!empty($_POST['roles']))
 				{
 					foreach($_POST['roles'] as $k => $v)
 					{
 						$role = ORM('role', array('name' => $v));
-						if(!$user->has('roles', $role))
+						if(!$orm->has('roles', $role))
 						{
-							$user->add('roles', $role);
+							$orm->add('roles', $role);
 						}
 					}
 					
-					foreach($user->roles->find_all() as $v)
+					foreach($orm->roles->find_all() as $v)
 					{
 						if(!isset($_POST['roles'][$v->name]))
 						{
-							$user->remove('roles', $v);
+							$orm->remove('roles', $v);
 						}
 					}
 				}
 
 				$this->session->set($_POST['sand'], TRUE);
-				$this->request->redirect('admin/users');
+				$this->request->redirect($this->_index);
 			}
-			else
-			{
-				$errors = $user->errors('validate');
-				$post->override($user);
-			}
+			//else
+			$errors = $orm->errors('validate');
+			$post->set($orm);
 		}
 		else
 		{
-			$post->override($user);
+			$post->set($orm);
 			
 			$roles = array();
-			foreach($user->roles->find_all() as $v)
+			foreach($orm->roles->find_all() as $v)
 			{
 				$roles[$v->name] = $v->name;
 			}
@@ -136,17 +131,17 @@ class Controller_Protected_Users extends Controller_Auth
 		}
 	}
 	
-	public function action_del()
+	public function action_delete()
 	{
 		$this->content->bind('post', $post);
 		$this->content->bind('errors', $errors);
 
 		$id = $this->param('id');
-		$user = ORM('user')->find($id);
+		$orm = ORM('user')->find($id);
 
-		if(!$user->loaded() or $id == $this->auth->id or ORM('user')->count_all() < 2)
+		if(!$orm->loaded() or $id == $this->auth->id or ORM('user')->count_all() < 2)
 		{
-			$this->request->redirect('admin/users');
+			$this->request->redirect($this->_index);
 		}
 
 		$post = new FormFields();
@@ -154,14 +149,10 @@ class Controller_Protected_Users extends Controller_Auth
 
 		if(!empty($_POST) and !$this->session->get($_POST['sand'], FALSE))
 		{
-			$user->delete();
+			$orm->delete();
 			
 			$this->session->set($_POST['sand'], TRUE);
-			$this->request->redirect('admin/users');
-		}
-		else
-		{
-			$post->override($user);
+			$this->request->redirect($this->_index);
 		}
 	}
 	
@@ -172,59 +163,57 @@ class Controller_Protected_Users extends Controller_Auth
 		$this->content->roles = ORM('role')->find_all();
 
 		$id = $this->param('id');
-		$user = ORM('user')->find($id);
+		$orm = ORM('user')->find($id);
 
-		if(!$user->loaded())
+		if(!$orm->loaded())
 		{
-			$this->request->redirect('admin/users');
+			$this->request->redirect($this->_index);
 		}
 
-		$post = new FormFields($user);
+		$post = new FormFields($orm);
 		$post->id = $id;
 
 		if(!empty($_POST) and !$this->session->get($_POST['sand'], FALSE))
 		{
-			$user->validate($_POST, array('username', 'nick', 'email'));
-			if($user->check())
+			$orm->validate($_POST, array('username', 'nick', 'email'));
+			if($orm->check())
 			{
-				$user->save();
+				$orm->save();
 
 				$this->session->set($_POST['sand'], TRUE);
-				$this->request->redirect('admin/users');
+				$this->request->redirect($this->_index);
 			}
-			else
-			{
-				$errors = $user->errors('validate');
-			}
+			//else
+			$errors = $orm->errors('validate');
 		}
 	}
 	
 	public function action_deactivate()
 	{
 		$id = $this->param('id');
-		$user = ORM('user')->find($id);
+		$orm = ORM('user')->find($id);
 		$role = ORM('role', array('name' => 'login'));//->find();
 		
-		if($user->loaded() and $user->has('roles', $role))
+		if($orm->loaded() and $orm->has('roles', $role))
 		{
-			$user->remove('roles', $role);
+			$orm->remove('roles', $role);
 		}
 
-		$this->request->redirect('admin/users');
+		$this->request->redirect($this->_index);
 	}
 	
 	public function action_activate()
 	{
 		$id = $this->param('id');
-		$user = ORM('user')->find($id);
+		$orm = ORM('user')->find($id);
 		$role = ORM('role', array('name' => 'login'));//->find();
 
-		if($user->loaded() and !$user->has('roles', $role))
+		if($orm->loaded() and !$orm->has('roles', $role))
 		{
-			$user->add('roles', $role);
+			$orm->add('roles', $role);
 		}
 
-		$this->request->redirect('admin/users');
+		$this->request->redirect($this->_index);
 	}
 	
 	public function action_last()

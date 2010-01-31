@@ -1,6 +1,6 @@
 <div class="columns_1">
 	<div class="column">
-		<?php echo html::anchor('admin/pages/add', 'Dodaj nową stronę', array('class' => 'add')); ?>
+		<?php echo html::anchor('admin/pages/create', 'Dodaj nową stronę', array('class' => 'add')); ?>
 		<br />
 		<br />
 		<div>
@@ -26,8 +26,8 @@
 						<td<?php if($field == 'title') echo ' class="imp_yel"' ?>><?php echo $v->title ?></td>
 						<td<?php if($field == 'link') echo ' class="imp_yel"' ?>><?php echo html::anchor($v->link, $v->link) ?></td>
 						<td class="imp_blue">
-							<a href="<?php echo url::site('admin/pages/edit/'.$v->id) ?>"><?php echo html::image('media/admin/img/edit.png', array('alt' => 'Edytuj', 'title' => 'Edytuj')) ?></a>
-							<a href="<?php echo url::site('admin/pages/del/'.$v->id) ?>"><?php echo html::image('media/admin/img/erese.png', array('alt' => 'Usuń', 'title' => 'Usuń')) ?></a>
+							<a href="<?php echo url::site('admin/pages/update.'.$v->id) ?>"><?php echo html::image('media/admin/img/edit.png', array('alt' => 'Edytuj', 'title' => 'Edytuj')) ?></a>
+							<a href="<?php echo url::site('admin/pages/delete.'.$v->id) ?>"><?php echo html::image('media/admin/img/erese.png', array('alt' => 'Usuń', 'title' => 'Usuń')) ?></a>
 						</td>
 					</tr>
 <?php endforeach ?>

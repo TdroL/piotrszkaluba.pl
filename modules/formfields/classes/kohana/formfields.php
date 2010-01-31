@@ -62,26 +62,6 @@ class Kohana_FormFields implements ArrayAccess, Iterator
 			$values = $values->as_array();
 		}
 
-		$this->_data = $values;
-
-		$this->clean();
-		return $this;
-	}
-
-	public function override($values)
-	{
-		if($values instanceof ORM)
-		{
-			$values->override($this);
-			$this->clean();
-			return;
-		}
-
-		if($values instanceof Validate)
-		{
-			$values = $values->as_array();
-		}
-
 		foreach($values as $k => $v)
 		{
 			$this->_data[$k] = $v;
@@ -107,6 +87,8 @@ class Kohana_FormFields implements ArrayAccess, Iterator
 				unset($this->_data[$k]);
 			}
 		}
+		
+		return $this;
 	}
 
 	public function sand()

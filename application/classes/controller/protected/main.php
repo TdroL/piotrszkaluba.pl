@@ -2,18 +2,15 @@
 
 class Controller_Protected_Main extends Controller_Auth
 {
-	protected $_access = array(
+	public $access = array(
 		'login' => NULL,
 		TRUE => 'login'
 	);
 	
-	public $_no_view = array('is_logged', 'logout');
-	public $_no_template = array('login');
+	public $no_view = array('is_logged', 'logout');
+	public $no_template = array('login');
 
-	public function action_index()
-	{
-
-	}
+	public function action_index() { }
 
 	public function action_login()
 	{

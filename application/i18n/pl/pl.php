@@ -33,7 +33,7 @@ return array(
 	// messages
 	'No images'							=> 'Brak obrazków w tej kategorii',
 	'Portfolio: contact from :email'	=> 'Portfolio: kontakt od :email',
-	
+	'Log is empty'						=> 'Dziennik jest pusty',
 	// errors
 	'Internal error: :param1'			=> 'Wystąpił błąd serwera: :param1',
 	'page ":link" does not exists'		=> 'strona ":link" nie istnieje',

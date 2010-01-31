@@ -1,19 +1,14 @@
 <div class="columns_1">
 	<div class="column">
 		<div class="title">
-			Usuń kategorię
+			Dodaj kategorię
 		</div>
-		<?php echo form::open('admin/categories/del/'.$post->id) ?>
+		<?php echo form::open('admin/categories/create') ?>
 		<div>
 			<?php echo form::hidden('sand', $post->sand) ?>
 		</div>
-<?php if(!empty($errors)): ?>
-			<ul class="error">
-<?php foreach($errors as $v): ?>
-				<li><?php echo rtrim($v, '.') ?>.</li>
-<?php endforeach ?>
-			</ul>
-<?php endif ?>
+		<?php echo html::error_messages($errors) ?>
+
 			<div class="box_1">
 				<div class="inp_1">
 					<div class="top">
@@ -24,21 +19,10 @@
 					</div>
 					<div class="cb"></div>
 					<div class="content">
-						<h3><b>UWAGA: usunięcie kategorii spowoduje usunięcie wszytkich obrazków do niej przypisanych!</b></h3>
-						<dl>
-							<dt>Tytuł:</dt>
-							<dd><?php echo $post->title ?></dd>
-						</dl>
-						<dl>
-							<dt>Link:</dt>
-							<dd><?php echo date('d.m.Y H:i', $post->date) ?></dd>
-						</dl>
-						<dl>
-							<dt>Obrazków przypisanych:</dt>
-							<dd>
-								<?php echo $post->images->count_all() ?>
-							</dd>
-						</dl>
+						<?php echo form::label('ititle', 'Tytuł') ?>
+						<div>
+							<?php echo form::input('title', $post->title, array('id' => 'ititle')) ?>
+						</div>
 					</div>
 					<div class="bottom">
 						<div class="left">
@@ -60,13 +44,10 @@
 					</div>
 					<div class="cb"></div>
 					<div class="content">
-						<div style="width: 40%; float: left;">
-							[<a href="<?php echo url::site('admin/categories') ?>">Anuluj</a>]
+						<?php echo form::label('ilink', 'Link') ?>
+						<div>
+							<?php echo form::input('link', $post->link, array('id' => 'ilink')) ?>
 						</div>
-						<div style="width: 40%; float: right; text-align: right;">
-							<?php echo form::submit('send', 'Usuń') ?>
-						</div>
-						<div class="cb"></div>
 					</div>
 					<div class="bottom">
 						<div class="left">
@@ -76,6 +57,10 @@
 						<div class="cb"></div>
 					</div>
 				</div>
+			</div>
+
+			<div>
+				<?php echo form::submit('send', 'Dodaj') ?>
 			</div>
 		<?php echo form::close() ?>
 		<div class="cb"></div>

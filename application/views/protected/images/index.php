@@ -1,6 +1,6 @@
 <div class="columns_1">
 	<div class="column">
-		<?php echo html::anchor('admin/images/add', 'Dodaj obrazek', array('class' => 'add')); ?>
+		<?php echo html::anchor('admin/images/create', 'Dodaj obrazek', array('class' => 'add')); ?>
 		<br />
 <?php if($categories->count()): ?>
 		<br />
@@ -42,8 +42,8 @@
 						<td<?php if($field == 'date') echo ' class="imp_yel"' ?>><?php echo date('d.m.Y H:i', $v->date) ?></td>
 						<td<?php if($field == 'category') echo ' class="imp_yel"' ?>><?php echo (empty($v->category) ? 'Brak' : html::anchor('admin/images/index/only/'.$v->category->link, $v->category->title)) ?></td>
 						<td class="imp_blue">
-							<a href="<?php echo url::site('admin/images/edit/'.$v->id) ?>"><?php echo html::image('media/admin/img/edit.png', array('alt' => 'Edytuj', 'title' => 'Edytuj')) ?></a>
-							<a href="<?php echo url::site('admin/images/del/'.$v->id) ?>"><?php echo html::image('media/admin/img/erese.png', array('alt' => 'Usuń', 'title' => 'Usuń')) ?></a>
+							<a href="<?php echo url::site('admin/images/update.'.$v->id) ?>"><?php echo html::image('media/admin/img/edit.png', array('alt' => 'Edytuj', 'title' => 'Edytuj')) ?></a>
+							<a href="<?php echo url::site('admin/images/delete.'.$v->id) ?>"><?php echo html::image('media/admin/img/erese.png', array('alt' => 'Usuń', 'title' => 'Usuń')) ?></a>
 					</tr>
 <?php endforeach ?>
 				</tbody>

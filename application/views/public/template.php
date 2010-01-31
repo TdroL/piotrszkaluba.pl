@@ -13,22 +13,12 @@
 	<?php echo html::script('media/js/jquery-1.4.1.min.js') ?>
 	<?php echo html::script('media/js/jquery.fancybox-1.2.6.pack.js') ?>
 	<?php echo html::script('media/js/images.js') ?>
-
-		<script type="text/javascript">
-var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-</script>
-<script type="text/javascript">
-try {
-var pageTracker = _gat._getTracker("UA-8543542-1");
-pageTracker._trackPageview();
-} catch(err) {}</script>
 </head>
 <body>
 	<div id="top">
 		<div class="center">
 			<a href="<?php echo url::base() ?>" class="logotype">
-				<?php echo html::image('media/images/img/logotype.gif', array('alt' => 'Piotr Szkałuba')) ?>
+				<?php echo html::image('media/images/img/logotype.gif', array('alt' => 'Piotr Szkałuba', 'title' => 'Piotr Szkałuba')) ?>
 			</a>
 			<div class="menu">
 				<object type="application/x-shockwave-flash" data="<?php echo url::site('media/swf/menu.swf') ?>" width="841" height="48">
@@ -52,6 +42,16 @@ pageTracker._trackPageview();
 			<?php echo html::image('media/images/pic/fot.gif', array('alt' => '')) ?>
 		</div>
 	</div>
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-8543542-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
 </body>
 </html>
 

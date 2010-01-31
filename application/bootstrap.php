@@ -158,7 +158,7 @@ if (!Route::cache())
 			'action' 	 => 'index',
 		));
 	
-	Route::set('admin', 'admin/<controller>(/<action>(/<id>))(/only/<category>)(/sort/<field>(/<sort>))(/page/<page>)', 
+	Route::set('admin', 'admin/<controller>(/<action>(.<id>))(/only/<category>)(/sort/<field>(/<sort>))(/page/<page>)', 
 		array(
 			'id'		=> '\d+',
 			'page'		=> '\d+',

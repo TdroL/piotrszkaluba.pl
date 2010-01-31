@@ -2,7 +2,7 @@
 
 class Controller_Auth extends Controller_Template
 {
-	protected $_access = array();
+	public $access = array();
 	public $auth = NULL;
 	
 	public function before()
@@ -12,18 +12,19 @@ class Controller_Auth extends Controller_Template
 		
 		$role = $this->request->controller; // default role
 		$action = $this->request->action;
-		if(array_key_exists($action, $this->_access)) // for only this one action
+		
+		if(array_key_exists($action, $this->access)) // for only this one action
 		{
-			$role = $this->_access[$action];
+			$role = $this->access[$action];
 		}
-		else if(in_array(TRUE, array_keys($this->_access))) // for all actions
+		else if(in_array(TRUE, array_keys($this->access))) // for all actions
 		{
-			$role = $this->_access[TRUE];
+			$role = $this->access[TRUE];
 		}
 		
-		if(empty($role)) // if $role is NULL, FALSE (empty) allow for all users, even not logged
+		if(empty($role))
 		{
-			return;
+			return; // if $role is NULL, FALSE (empty) allow for all users, even not logged
 		}
 		
 		if($this->auth->logged_in())
@@ -35,7 +36,7 @@ class Controller_Auth extends Controller_Template
 			
 			if(!$this->auth->has_role($role))
 			{
-				//die('role required: '.$role.' but user hasn\'t that role');
+				// role required: $role
 				$this->request->redirect('admin/main');
 			}
 
@@ -43,7 +44,7 @@ class Controller_Auth extends Controller_Template
 		}
 		else
 		{
-			//die('role required: '.$role.' but not logged in');
+			// not logged in
 			$this->request->redirect('admin/login');
 		}
 	}

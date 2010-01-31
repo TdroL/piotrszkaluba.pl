@@ -2,6 +2,8 @@
 
 class Controller_Protected_Pages extends Controller_Auth
 {
+	protected $_index = 'admin/pages';
+	
 	public function action_index()
 	{
 		$this->content->field = $this->param('field', 'date');
@@ -12,7 +14,7 @@ class Controller_Protected_Pages extends Controller_Auth
 									->find_all();
 	}
 	
-	public function action_add()
+	public function action_create()
 	{
 		$this->content->bind('post', $post);
 		$this->content->bind('errors', $errors);
@@ -21,35 +23,32 @@ class Controller_Protected_Pages extends Controller_Auth
 
 		if(!empty($_POST) and !$this->session->get($_POST['sand'], FALSE))
 		{
-			$page = ORM('page')->validate($_POST);
-			if($page->check())
+			$orm = ORM('page')->validate($_POST);
+			if($orm->check())
 			{
-				$page->date = time();
-				//var_dump($_POST, $page->as_array());return;
-				$page->save();
+				$orm->date = time();
+				$orm->save();
 
 				$this->session->set($_POST['sand'], TRUE);
-				$this->request->redirect('admin/pages');
+				$this->request->redirect($this->_index);
 			}
-			else
-			{
-				$errors = $page->errors('validate');
-				$post->override($page);
-			}
+			//else
+			$errors = $orm->errors('validate');
+			$post->set($orm);
 		}
 	}
 	
-	public function action_edit()
+	public function action_update()
 	{
 		$this->content->bind('post', $post);
 		$this->content->bind('errors', $errors);
 
 		$id = $this->param('id');
-		$page = ORM('page')->find($id);
+		$orm = ORM('page')->find($id);
 
-		if(!$page->loaded())
+		if(!$orm->loaded())
 		{
-			$this->request->redirect('admin/pages');
+			$this->request->redirect($this->_index);
 		}
 
 		$post = new FormFields($_POST);
@@ -57,51 +56,43 @@ class Controller_Protected_Pages extends Controller_Auth
 
 		if(!empty($_POST) and !$this->session->get($_POST['sand'], FALSE))
 		{
-			$page->validate($_POST);
-			if($page->check())
+			$orm->validate($_POST);
+			if($orm->check())
 			{
-				//var_dump($_POST, $page->as_array());return;
-				$page->save();
+				$orm->save();
 
 				$this->session->set($_POST['sand'], TRUE);
-				$this->request->redirect('admin/pages');
+				$this->request->redirect($this->_index);
 			}
-			else
-			{
-				$errors = $page->errors('validate');
-				$post->override($page);
-			}
+			//else
+			$errors = $orm->errors('validate');
 		}
-		else
-		{
-			$post->override($page);
-		}
+
+		$post->set($orm);
 	}
 	
-	public function action_del()
+	public function action_delete()
 	{
 		$this->content->bind('post', $post);
 		$this->content->bind('errors', $errors);
 
 		$id = $this->param('id');
-		$page = ORM('page')->find($id);
+		$orm = ORM('page')->find($id);
 
-		if(!$page->loaded())
+		if(!$orm->loaded())
 		{
-			$this->request->redirect('admin/pages');
+			$this->request->redirect($this->_index);
 		}
 
-		$post = new FormFields($page);
+		$post = new FormFields($orm);
 		$post->id = $id;
 
 		if(!empty($_POST) and !$this->session->get($_POST['sand'], FALSE))
 		{
-			$page->delete();
-
-			//var_dump($page->as_array(), $page->last_query());
+			$orm->delete();
 
 			$this->session->set($_POST['sand'], TRUE);
-			$this->request->redirect('admin/pages');
+			$this->request->redirect($this->_index);
 		}
 	}
 }

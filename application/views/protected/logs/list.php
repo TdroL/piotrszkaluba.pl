@@ -1,3 +1,6 @@
+<?php if(empty($dir)): ?>
+	<?php echo __('Log is empty') ?>
+<?php else: ?>
 		<ul>
 <?php foreach($dir as $y => $ms): ?>
 			<li>
@@ -17,3 +20,4 @@
 			</li>
 <?php endforeach ?>
 		</ul>
+<?php endif ?>

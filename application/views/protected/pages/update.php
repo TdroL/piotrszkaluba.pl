@@ -1,19 +1,13 @@
 <div class="columns_1">
 	<div class="column">
 		<div class="title">
-			Dodaj nową stronę
+			Edytuj stronę
 		</div>
-		<?php echo form::open('admin/pages/add') ?>
+		<?php echo form::open('admin/pages/update.'.$post->id) ?>
 		<div>
 			<?php echo form::hidden('sand', $post->sand) ?>
 		</div>
-<?php if(!empty($errors)): ?>
-			<ul class="error">
-<?php foreach($errors as $v): ?>
-				<li><?php echo rtrim($v, '.') ?>.</li>
-<?php endforeach ?>
-			</ul>
-<?php endif ?>
+		<?php echo html::error_messages($errors) ?>
 
 			<div class="box_1">
 				<div class="inp_1">
@@ -39,7 +33,7 @@
 					</div>
 				</div>
 			</div>
-			
+
 			<div class="box_1">
 				<div class="inp_1">
 					<div class="top">
@@ -64,7 +58,7 @@
 					</div>
 				</div>
 			</div>
-			
+
 			<div class="box_1">
 				<div class="textarea_1">
 					<div class="top">
@@ -93,9 +87,9 @@
 					</div>
 				</div>
 			</div>
-			
+
 			<div>
-				<?php echo form::submit('send', 'Dodaj') ?>
+				<?php echo form::submit('send', 'Zatwierdź zmiany') ?>
 			</div>
 		<?php echo form::close() ?>
 		<div class="cb"></div>

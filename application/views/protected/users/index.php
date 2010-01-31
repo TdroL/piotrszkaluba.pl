@@ -1,6 +1,6 @@
 <div class="columns_1">
 	<div class="column">
-		<?php echo html::anchor('admin/users/add', 'Dodaj konto', array('class' => 'add')); ?>
+		<?php echo html::anchor('admin/users/create', 'Dodaj konto', array('class' => 'add')); ?>
 		<br />
 		<br />
 		<div>
@@ -34,18 +34,18 @@
 						</td>
 						<td<?php if($field == 'username') echo ' class="imp_yel"' ?>><?php echo $v->username ?></td>
 						<td class="imp_blue">
-							<a href="<?php echo url::site('admin/users/edit/'.$v->id) ?>"><?php echo html::image('media/admin/img/edit.png', array('alt' => 'Edytuj', 'title' => 'Edytuj')) ?></a>
+							<a href="<?php echo url::site('admin/users/update.'.$v->id) ?>"><?php echo html::image('media/admin/img/edit.png', array('alt' => 'Edytuj', 'title' => 'Edytuj')) ?></a>
 <?php if($v->id != $auth->id): ?>
-							<a href="<?php echo url::site('admin/users/del/'.$v->id) ?>"><?php echo html::image('media/admin/img/erese.png', array('alt' => 'Usuń', 'title' => 'Usuń')) ?></a>
+							<a href="<?php echo url::site('admin/users/delete.'.$v->id) ?>"><?php echo html::image('media/admin/img/erese.png', array('alt' => 'Usuń', 'title' => 'Usuń')) ?></a>
 <?php else: ?>
 							<?php echo html::image('media/admin/img/erese.png', array('alt' => 'Usuń', 'title' => 'Usuń')) ?>
 
 <?php endif ?>
-							<?php echo html::anchor('admin/users/password/'.$v->id, 'Zmień hasło') ?>
+							<?php echo html::anchor('admin/users/password.'.$v->id, 'Zmień hasło') ?>
 <?php if($v->has('roles', $login)): ?>
-							<?php echo html::anchor('admin/users/deactivate/'.$v->id, 'Deaktywuj') ?>
+							<?php echo html::anchor('admin/users/deactivate.'.$v->id, 'Deaktywuj') ?>
 <?php else: ?>
-							<?php echo html::anchor('admin/users/activate/'.$v->id, 'Aktywuj') ?>
+							<?php echo html::anchor('admin/users/activate.'.$v->id, 'Aktywuj') ?>
 <?php endif ?>
 						</td>
 					</tr>

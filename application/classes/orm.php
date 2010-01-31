@@ -13,11 +13,11 @@ class ORM extends Kohana_ORM
 	{
 		if($this->_validate !== NULL)
 		{
-			$post->override($this->_validate->as_array());
+			$post->set($this->_validate->as_array());
 		}
 		else
 		{
-			$post->override($this->_object);
+			$post->set($this->_object);
 			
 			foreach($this->_related as $k => $v)
 			{
