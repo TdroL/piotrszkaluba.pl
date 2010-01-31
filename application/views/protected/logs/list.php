@@ -8,7 +8,7 @@
 				<ul>
 <?php 	foreach($ms as $m => $ds): ?>
 					<li>
-						<?php echo __(Controller_Protected_Logs::get_month($m)) ?>
+						<?php echo __(Date::get_month($m)) ?>
 						<ul>
 <?php 		foreach($ds as $d => $fn): ?>
 							<li<?php echo ($active == $fn) ? ' class="active"' : NULL ?>><a href="<?php echo url::site('admin/logs/'.$fn) ?>"><?php echo $d ?></a></li>

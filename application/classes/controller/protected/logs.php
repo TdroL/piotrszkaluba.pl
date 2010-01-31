@@ -106,10 +106,4 @@ class Controller_Protected_Logs extends Controller_Auth
 		$this->content->dir = $dir;
 		$this->content->active = $active;
 	}
-	
-	public static function get_month($month)
-	{
-		$months = Kohana::message('months');
-		return $months[$month];
-	}
 }
