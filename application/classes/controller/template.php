@@ -15,8 +15,8 @@ class Controller_Template extends Controller {
 	 */
 	public $view = 'template';
 	public $content = TRUE;
-	public $no_view = array();
-	public $no_template = array();
+	public $_no_view = array();
+	public $_no_template = array();
 
 	/**
 	 * @var  boolean  auto render template
@@ -34,7 +34,7 @@ class Controller_Template extends Controller {
 	public function before()
 	{
 		$this->session = Session::instance();
-		if ($this->auto_render === TRUE and $this->view !== NULL and !in_array($this->request->action, $this->no_view))
+		if ($this->auto_render === TRUE and $this->view !== NULL and !in_array($this->request->action, $this->_no_view))
 		{
 			if(Request::$is_ajax)
 			{
@@ -43,7 +43,7 @@ class Controller_Template extends Controller {
 			}
 			else
 			{
-				if(!in_array($this->request->action, $this->no_template))
+				if(!in_array($this->request->action, $this->_no_template))
 				{
 					$this->view = new View((!empty($this->request->directory) ? $this->request->directory.'/' : NULL).$this->view);
 					
@@ -76,7 +76,7 @@ class Controller_Template extends Controller {
 	 */
 	public function after()
 	{
-		if ($this->auto_render === TRUE and !in_array($this->request->action, $this->no_view))
+		if ($this->auto_render === TRUE and !in_array($this->request->action, $this->_no_view))
 		{
 			// Assign the template as the request response and render it
 			$this->view->set_global('request', $this->request);

@@ -6,7 +6,7 @@ class Controller_Protected_Logs extends Controller_Auth
 		TRUE => 'admin'
 	);
 	
-	public $no_template = array('list');
+	public $_no_template = array('list');
 	
 	public function action_index()
 	{

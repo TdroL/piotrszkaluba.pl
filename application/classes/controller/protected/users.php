@@ -7,8 +7,8 @@ class Controller_Protected_Users extends Controller_Auth
 			TRUE => 'admin',
 	);
 	
-	public $no_template = array('last');
-	public $no_view = array('deactivate', 'activate');
+	public $_no_template = array('last');
+	public $_no_view = array('deactivate', 'activate');
 	
 	public function action_index()
 	{
@@ -30,8 +30,7 @@ class Controller_Protected_Users extends Controller_Auth
 		$this->content->bind('errors', $errors);
 		$this->content->roles = ORM('role')->find_all();
 		
-		$post = form::fields($_POST);
-		$post->sand	= html::sand();
+		$post = new FormFields($_POST);
 
 		if(!empty($_POST) and !$this->session->get($_POST['sand'], FALSE))
 		{
@@ -59,13 +58,13 @@ class Controller_Protected_Users extends Controller_Auth
 					
 					$user->error('server', 'internal_error', array($e->getMessage()));
 					$errors = $user->errors('validate');
-					$user->override($post);
+					$post->override($user);
 				}
 			}
 			else
 			{
 				$errors = $user->errors('validate');
-				$user->override($post);
+				$post->override($user);
 			}
 		}
 	}
@@ -84,8 +83,7 @@ class Controller_Protected_Users extends Controller_Auth
 			$this->request->redirect('admin/users');
 		}
 
-		$post = form::fields($_POST);
-		$post->sand	= html::sand();
+		$post = new FormFields($_POST);
 		$post->id = $id;
 
 		if(!empty($_POST) and !$this->session->get($_POST['sand'], FALSE))
@@ -121,12 +119,12 @@ class Controller_Protected_Users extends Controller_Auth
 			else
 			{
 				$errors = $user->errors('validate');
-				$user->override($post);
+				$post->override($user);
 			}
 		}
 		else
 		{
-			$user->override($post);
+			$post->override($user);
 			
 			$roles = array();
 			foreach($user->roles->find_all() as $v)
@@ -151,8 +149,7 @@ class Controller_Protected_Users extends Controller_Auth
 			$this->request->redirect('admin/users');
 		}
 
-		$post = form::fields();
-		$post->sand	= html::sand();
+		$post = new FormFields();
 		$post->id = $id;
 
 		if(!empty($_POST) and !$this->session->get($_POST['sand'], FALSE))
@@ -164,7 +161,7 @@ class Controller_Protected_Users extends Controller_Auth
 		}
 		else
 		{
-			$user->override($post);
+			$post->override($user);
 		}
 	}
 	
@@ -182,9 +179,7 @@ class Controller_Protected_Users extends Controller_Auth
 			$this->request->redirect('admin/users');
 		}
 
-		$post = form::fields();
-		$user->override($post);
-		$post->sand	= html::sand();
+		$post = new FormFields($user);
 		$post->id = $id;
 
 		if(!empty($_POST) and !$this->session->get($_POST['sand'], FALSE))

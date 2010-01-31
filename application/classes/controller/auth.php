@@ -35,7 +35,7 @@ class Controller_Auth extends Controller_Template
 			
 			if(!$this->auth->has_role($role))
 			{
-				die('role required: '.$role.' but user hasn\'t that role');
+				//die('role required: '.$role.' but user hasn\'t that role');
 				$this->request->redirect('admin/main');
 			}
 
@@ -43,7 +43,7 @@ class Controller_Auth extends Controller_Template
 		}
 		else
 		{
-			die('role required: '.$role.' but not logged in');
+			//die('role required: '.$role.' but not logged in');
 			$this->request->redirect('admin/login');
 		}
 	}

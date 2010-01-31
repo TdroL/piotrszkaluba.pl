@@ -93,6 +93,7 @@ Kohana::modules(array(
 	 'database'   => MODPATH.'database',   	// Database access
 	 'orm'        => MODPATH.'orm',        	// Object Relationship Mapping
 	 'pagination' => MODPATH.'pagination', 	// Paging of results
+	 'formfields' => MODPATH.'formfields',
 	));
 
 if(is_file(APPPATH.'base.php'))

@@ -12,8 +12,7 @@ class Controller_Protected_Categories extends Controller_Auth
 		$this->content->bind('post', $post);
 		$this->content->bind('errors', $errors);
 
-		$post = form::fields($_POST);
-		$post->sand	= html::sand();
+		$post = new FormFields($_POST);
 		
 		if(!empty($_POST) and !$this->session->get($_POST['sand'], FALSE))
 		{
@@ -29,7 +28,7 @@ class Controller_Protected_Categories extends Controller_Auth
 			else
 			{
 				$errors = $category->errors('validate');
-				$category->override($post);
+				$post->override($category);
 			}
 		}
 	}
@@ -47,8 +46,7 @@ class Controller_Protected_Categories extends Controller_Auth
 			$this->request->redirect('admin/categories');
 		}
 
-		$post = form::fields($_POST);
-		$post->sand	= html::sand();
+		$post = new FormFields($_POST);
 		$post->id = $id;
 
 		if(!empty($_POST) and !$this->session->get($_POST['sand'], FALSE))
@@ -69,12 +67,12 @@ class Controller_Protected_Categories extends Controller_Auth
 			else
 			{
 				$errors = $category->errors('validate');
-				$category->override($post);
+				$post->override($category);
 			}
 		}
 		else
 		{
-			$category->override($post);
+			$post->override($category);
 		}
 	}
 	
@@ -91,10 +89,8 @@ class Controller_Protected_Categories extends Controller_Auth
 			$this->request->redirect('admin/categories');
 		}
 
-		$post = form::fields();
-		$post->sand	= html::sand();
+		$post = new FormFields($category);
 		$post->id = $id;
-		$category->override($post);
 		$post->images = $category->images;
 
 		if(!empty($_POST) and !$this->session->get($_POST['sand'], FALSE))

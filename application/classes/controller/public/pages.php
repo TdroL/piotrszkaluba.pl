@@ -27,7 +27,7 @@ class Controller_Public_Pages extends Controller_Template
 		$this->content->bind('post', $post);
 		$this->content->bind('errors', $errors);
 		
-		$post = form::fields($_POST);
+		$post = new FormFields($_POST);
 		$post->sand	= html::sand();
 		
 		if(!empty($_POST) and !$this->session->get($_POST['sand'], FALSE))

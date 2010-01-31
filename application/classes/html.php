@@ -80,10 +80,4 @@ class HTML extends Kohana_HTML
 
 		return $compiled;
 	}
-	
-	public static function sand()
-	{
-		$r = Request::instance();
-		return join('-', array($r->directory, $r->controller, $r->action)).'$'.uniqid();
-	}
 }

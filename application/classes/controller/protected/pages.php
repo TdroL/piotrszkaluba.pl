@@ -17,8 +17,7 @@ class Controller_Protected_Pages extends Controller_Auth
 		$this->content->bind('post', $post);
 		$this->content->bind('errors', $errors);
 
-		$post = form::fields($_POST);
-		$post->sand	= html::sand();
+		$post = new FormFields($_POST);
 
 		if(!empty($_POST) and !$this->session->get($_POST['sand'], FALSE))
 		{
@@ -35,7 +34,7 @@ class Controller_Protected_Pages extends Controller_Auth
 			else
 			{
 				$errors = $page->errors('validate');
-				$page->override($post);
+				$post->override($page);
 			}
 		}
 	}
@@ -53,8 +52,7 @@ class Controller_Protected_Pages extends Controller_Auth
 			$this->request->redirect('admin/pages');
 		}
 
-		$post = form::fields($_POST);
-		$post->sand	= html::sand();
+		$post = new FormFields($_POST);
 		$post->id = $id;
 
 		if(!empty($_POST) and !$this->session->get($_POST['sand'], FALSE))
@@ -71,12 +69,12 @@ class Controller_Protected_Pages extends Controller_Auth
 			else
 			{
 				$errors = $page->errors('validate');
-				$page->override($post);
+				$post->override($page);
 			}
 		}
 		else
 		{
-			$page->override($post);
+			$post->override($page);
 		}
 	}
 	
@@ -93,10 +91,8 @@ class Controller_Protected_Pages extends Controller_Auth
 			$this->request->redirect('admin/pages');
 		}
 
-		$post = form::fields();
-		$post->sand	= html::sand();
+		$post = new FormFields($page);
 		$post->id = $id;
-		$page->override($post);
 
 		if(!empty($_POST) and !$this->session->get($_POST['sand'], FALSE))
 		{

@@ -41,8 +41,7 @@ class Controller_Protected_Images extends Controller_Auth
 		$this->content->bind('errors', $errors);
 		$this->content->categories = ORM('category')->find_all();
 		
-		$post = form::fields($_POST);
-		$post->sand	= html::sand();
+		$post = new FormFields();
 		
 		if(!empty($_POST) and !$this->session->get($_POST['sand'], FALSE))
 		{
@@ -59,7 +58,7 @@ class Controller_Protected_Images extends Controller_Auth
 			else
 			{
 				$errors = $image->errors('validate');
-				$image->override($post);
+				$post->override($image);
 			}
 		}
 	}
@@ -78,8 +77,7 @@ class Controller_Protected_Images extends Controller_Auth
 			$this->request->redirect('admin/images');
 		}
 
-		$post = form::fields($_POST);
-		$post->sand	= html::sand();
+		$post = new FormFields($_POST);
 		$post->id = $id;
 
 		if(!empty($_POST) and !$this->session->get($_POST['sand'], FALSE))
@@ -100,12 +98,12 @@ class Controller_Protected_Images extends Controller_Auth
 			else
 			{
 				$errors = $image->errors('validate');
-				$image->override($post);
+				$post->override($image);
 			}
 		}
 		else
 		{
-			$image->override($post);
+			$post->override($image);
 		}
 	}
 	
@@ -122,8 +120,7 @@ class Controller_Protected_Images extends Controller_Auth
 			$this->request->redirect('admin/images');
 		}
 
-		$post = form::fields($_POST);
-		$post->sand	= html::sand();
+		$post = new FormFields($_POST);
 		$post->id = $id;
 
 		if(!empty($_POST) and !$this->session->get($_POST['sand'], FALSE))
@@ -157,7 +154,7 @@ class Controller_Protected_Images extends Controller_Auth
 		}
 		else
 		{
-			$image->override($post);
+			$post->override($image);
 		}
 	}
 }
