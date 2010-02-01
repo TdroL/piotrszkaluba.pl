@@ -1,9 +1,9 @@
 <?php defined('SYSPATH') OR die('No direct access allowed.') ?>
 <!DOCTYPE html>
-<html>
+<html lang="pl">
 <head>
 	<title>Piotr Szkaluba Web design Portfolio</title>
-	<meta charset="utf-8" />
+	<meta charset="UTF-8" />
 	<meta name="robots" content="all">
 	<meta name="revisit-after" content="10 days">
 	<meta name="description" content="Zajmuje sie projektowanie stron www, jaki i portali i sklepow internetowych, jezeli szukasz innowacyjnych rozwiazan zapraszam.">
