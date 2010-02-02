@@ -40,6 +40,7 @@ ini_set('unserialize_callback_func', 'spl_autoload_call');
 * Set if the application is in development (FALSE)
 * or if the application is in production (TRUE).
 */
+!isset($_SERVER['SERVER_NAME']) and $_SERVER['SERVER_NAME'] = 'localhost';
 define('IN_PRODUCTION', $_SERVER['SERVER_NAME'] != 'localhost');
 
 /**
@@ -110,6 +111,15 @@ Kohana::$log->attach(new FirePHP_Log_Console());
 if (!Route::cache())
 {
 	// ----------- ADMIN ----------- //
+	if(!IN_PRODUCTION)
+	{
+		Route::set('cli', 'cli/<action>')
+			->defaults(array(
+				'controller'	=> 'cli',
+				'action'		=> 'generate',
+			));
+	}
+	
 	Route::set('login', 'admin/login')
 		->defaults(array(
 			'directory'		=> 'protected',
