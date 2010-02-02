@@ -61,7 +61,7 @@ class Controller_Public_Pages extends Controller_Template
 						->setPassword($config->password);
 
 					$message = Swift_Message::newInstance()
-						->setSubject(__('Portfolio: contact from :email', array(':email' => $email)))
+						->setSubject(__('Portfolio: message from :email', array(':email' => $email)))
 						->setFrom($email)
 						->setTo($config->to)
 						->setBody(strip_tags($content))
