@@ -6,4 +6,4 @@ Used:
 - HTML5 (partially)
 - jQuery 1.4 + Fancybox (jQuery plugin)
 
-Site: [Piotr Szka≥uba](http://piotrszkaluba.pl)
+Site: [Piotr Szka≈Çuba](http://piotrszkaluba.pl)
