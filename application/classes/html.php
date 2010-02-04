@@ -2,11 +2,6 @@
 
 class HTML extends Kohana_HTML
 {
-	public static function load($uri)
-	{
-		return Request::factory($uri)->execute()->send_headers()->response;
-	}
-	
 	public static function error_messages($errors = array())
 	{
 		if(empty($errors))

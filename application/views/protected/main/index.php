@@ -30,11 +30,11 @@
 			<div class="cb"></div>
 		</div>
 
-		<?php echo html::load('admin/users/last') ?>
+		<?php echo Request::load('admin/users/last') ?>
 	</div>
 	<div class="column column_content center">
 		<?php echo html::image('media/admin/img/abstraction.png') ?>
-		<?php //echo html::load('admin/shoutbox') ?>
+		<?php //echo Request::load('admin/shoutbox') ?>
 	</div>
 	<div class="cb"></div>
 </div>

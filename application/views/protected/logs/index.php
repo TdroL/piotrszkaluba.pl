@@ -5,7 +5,7 @@
 <?php endforeach ?>
 	</div>
 	<div class="column column_menu">
-		<?php echo html::load('admin/logs/list/'.$path) ?>
+		<?php echo Request::load('admin/logs/list/'.$path) ?>
 	</div>
 	<div class="cb"></div>
 </div>
