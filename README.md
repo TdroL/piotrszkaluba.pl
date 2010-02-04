@@ -1,6 +1,7 @@
 # Urumbumburu's portfolio
 
 Used:
-- Kohana 3.0, my modifications and fixes
+
+- Kohana 3.0 + firephp + my modifications and fixes
 - HTML5 (partially)
-- jQuery 1.4, Fancybox (jQuery plugin)
+- jQuery 1.4 + Fancybox (jQuery plugin)
