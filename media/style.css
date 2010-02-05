@@ -4,8 +4,8 @@
 td {vertical-align: top;}
 body {background: #3d3d3d ; font-family: "Trebuchet MS";}
 
-#top {height: 107px; background: url('images/pic/bg.gif')  #4395be repeat-x ;}
-#content {background: url('images/pic/bg.jpg') #4395be no-repeat left bottom ;}
+#top {height: 107px; background: url('images/pic/bg.gif')  #c8e3c6 repeat-x ;}
+#content {background: url('images/pic/bg.jpg') #c8e3c6 no-repeat left bottom ;}
 #fast {background: #f1f1f1; height: 119px;border-top: 1px solid #d5d6d7;}
 #fotter {background: url('images/pic/bgFotter.gif') repeat-x ; height: 149px;font-size: 11px; color: white;text-align: right;padding-top: 3px;}
 
