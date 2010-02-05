@@ -81,13 +81,13 @@ class Controller_Public_Pages extends Controller_Template
 				{
 					$validate->error('email', 'swiftmailer_error', array($e->getMessage()));
 					$errors = $validate->errors('validate');
-					$post->override($validate);
+					$post->set($validate);
 				}
 			}
 			else
 			{
 				$errors = $validate->errors('validate');
-				$post->override($validate);
+				$post->set($validate);
 			}
 		}
 	}
