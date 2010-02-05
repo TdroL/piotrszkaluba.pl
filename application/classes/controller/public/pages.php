@@ -28,7 +28,6 @@ class Controller_Public_Pages extends Controller_Template
 		$this->content->bind('errors', $errors);
 		
 		$post = new FormFields($_POST);
-		$post->sand	= html::sand();
 		
 		if(!empty($_POST) and !$this->session->get($_POST['sand'], FALSE))
 		{
@@ -61,7 +60,7 @@ class Controller_Public_Pages extends Controller_Template
 						->setPassword($config->password);
 
 					$message = Swift_Message::newInstance()
-						->setSubject(__('Portfolio: message from :email', array(':email' => $email)))
+						->setSubject(__('Portfolio - message from :email', array(':email' => $email)))
 						->setFrom($email)
 						->setTo($config->to)
 						->setBody(strip_tags($content))
@@ -76,7 +75,6 @@ class Controller_Public_Pages extends Controller_Template
 					}
 					
 					$this->session->set($_POST['sand'], TRUE);
-					$post->sand = html::sand();
 					$this->content->success = TRUE;
 				}
 				catch(Exception $e)

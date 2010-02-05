@@ -32,7 +32,7 @@ return array(
 	'Access'			=> 'Dostęp',
 	// messages
 	'No images'							=> 'Brak obrazków w tej kategorii',
-	'Portfolio: message from :email'	=> 'Portfolio: kontakt od :email',
+	'Portfolio - message from :email'	=> 'Portfolio - wiadomość od :email',
 	'Log is empty'						=> 'Dziennik jest pusty',
 	// errors
 	'Internal error: :param1'			=> 'Wystąpił błąd serwera: :param1',
