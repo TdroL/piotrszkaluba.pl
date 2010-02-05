@@ -1,9 +1,9 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 
 return array(
-	'to'		=> 'urumbumburu@gmail.com',
-	'username'	=> 'piotr.adotech',
-	'password'	=> 'piotr.szkaluba',
-	'server'	=> 'adotech.home.pl',
+	'to'		=> 'michal12.mail@gmail.com',
+	'username'	=> 'admin',
+	'password'	=> 'admin',
+	'server'	=> 'localhost',
 	'port'		=> 25,
 );

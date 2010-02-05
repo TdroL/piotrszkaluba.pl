@@ -20,11 +20,11 @@ $_database =  array
 	'alternate' => array(
 		'type'       => 'mysql',
 		'connection' => array(
-			'hostname'   => 'sql.adotech.home.pl',
-			'username'   => 'adotech40',
-			'password'   => 'piotrsz',
+			'hostname'   => '***',
+			'username'   => '***',
+			'password'   => '***',
 			'persistent' => FALSE,
-			'database'   => 'adotech40',
+			'database'   => '***',
 		),
 		'table_prefix' => '',
 		'charset'      => 'utf8',

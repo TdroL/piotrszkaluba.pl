@@ -55,7 +55,7 @@ body {background: #3d3d3d ; font-family: "Trebuchet MS";}
 #content .portfolio .cv .kontakt input {margin-bottom: 10px;border: 1px solid #c1c1c1 ;font-size: 12px;padding: 3px;width: 190px;}
 #content .portfolio .cv .kontakt textarea {height: 300px;border: 1px solid #c1c1c1 ;font-size: 12px;padding: 3px;width: 560px;}
 
-#content .pagination {text-align: center;margin-bottom: 10px;}
+#content .pagination {text-align: center;padding-bottom: 10px;}
 #content .pagination a {color: black; text-decoration: none; background: white; padding: 1px 4px;border: 1px solid gray;font-size: 11px;}
 #content .pagination a:hover {color: white; background: black;}
 
