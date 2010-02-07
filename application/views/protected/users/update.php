@@ -1,7 +1,7 @@
 <div class="columns_1">
 	<div class="column">
 		<div class="title">
-			Edytuj konto
+			<?php echo __('Update user') ?>
 		</div>
 		<?php echo form::open('admin/users/update.'.$post->id) ?>
 		<div>
@@ -19,11 +19,11 @@
 					</div>
 					<div class="cb"></div>
 					<div class="content">
-						<?php echo form::label('iusername', 'Login') ?>
+						<?php echo form::label('iusername', __('Login')) ?>
 						<div>
 							<?php echo form::input('username', $post->username, array('id' => 'iusername')) ?>
 						</div>
-						<small><em>Wymagane 4 do 32 znaków</em></small>
+						<small><em><?php echo __('Required 4 to 32 characters') ?></em></small>
 					</div>
 					<div class="bottom">
 						<div class="left">
@@ -45,7 +45,7 @@
 					</div>
 					<div class="cb"></div>
 					<div class="content">
-						<?php echo form::label('inick', 'Nick') ?>
+						<?php echo form::label('inick', __('Nick')) ?>
 						<div>
 							<?php echo form::input('nick', $post->nick, array('id' => 'inick')) ?>
 						</div>
@@ -70,7 +70,7 @@
 					</div>
 					<div class="cb"></div>
 					<div class="content">
-						Dostęp
+						<label><?php echo __('Access') ?></label>
 <?php foreach($roles as $v): ?>
 						<div>
 							<?php echo form::checkbox('roles['.$v->name.']', $v->name, isset($post->roles[$v->name]) and $post->roles[$v->name] == $v->name, array('id' => 'iroles_'.$v->name)) ?>
@@ -89,7 +89,7 @@
 			</div>
 			
 			<div>
-				<?php echo form::submit('send', 'Zatwierdź zmiany') ?>
+				<?php echo form::submit('send', __('Confirm')) ?>
 			</div>
 		<?php echo form::close() ?>
 		<div class="cb"></div>

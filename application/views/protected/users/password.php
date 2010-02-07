@@ -1,7 +1,7 @@
 <div class="columns_1">
 	<div class="column">
 		<div class="title">
-			Zmień hasło
+			<?php echo __('Change password') ?>
 		</div>
 		<?php echo form::open('admin/users/password.'.$post->id) ?>
 		<div>
@@ -19,7 +19,7 @@
 					</div>
 					<div class="cb"></div>
 					<div class="content">
-						<label>Login</label>
+						<label><?php echo __('Login') ?></label>
 						<div>
 							<?php echo $post->username ?>
 						</div>
@@ -44,16 +44,16 @@
 					</div>
 					<div class="cb"></div>
 					<div class="content">
-						<?php echo form::label('ipassword', 'Hasło') ?>
+						<?php echo form::label('ipassword', __('Password')) ?>
 						<div>
 							<?php echo form::password('password', NULL, array('id' => 'ipassword')) ?>
 						</div>
 						
-						<?php echo form::label('ipassword_confirm', 'Powtórz hasło') ?>
+						<?php echo form::label('ipassword_confirm', __('Password confirm')) ?>
 						<div>
 							<?php echo form::password('password_confirm', NULL, array('id' => 'ipassword_confirm')) ?>
 						</div>
-						<small><em>Wymagane 5 do 42 znaków</em></small>
+						<small><em><?php echo __('Required 5 to 42 characters') ?></em></small>
 					</div>
 					<div class="bottom">
 						<div class="left">
@@ -66,7 +66,7 @@
 			</div>
 
 			<div>
-				<?php echo form::submit('send', 'Zatwierdź zmiany') ?>
+				<?php echo form::submit('send', __('Confirm')) ?>
 			</div>
 		<?php echo form::close() ?>
 		<div class="cb"></div>

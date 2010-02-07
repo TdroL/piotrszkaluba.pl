@@ -1,7 +1,7 @@
 <div class="columns_1">
 	<div class="column">
 		<div class="title">
-			Usuń stronę
+			<?php echo __('Delete page') ?>
 		</div>
 		<?php echo form::open('admin/pages/delete.'.$post->id) ?>
 		<div>
@@ -19,18 +19,16 @@
 					</div>
 					<div class="cb"></div>
 					<div class="content">
-						Tytuł:
-						<div>
-							<?php echo $post->title ?>
-						</div>
-						Link:
-						<div>
-							<?php echo html::anchor($post->link, $post->link) ?>
-						</div>
-						Treść:
-						<div>
-							<?php echo html::chars($post->content) ?>
-						</div>
+						<dl>
+							<dt><?php echo __('Title') ?></dt>
+							<dd><?php echo $post->title ?></dd>
+	
+							<dt><?php echo __('Link') ?></dt>
+							<dd><?php echo html::anchor($post->link, $post->link) ?></dd>
+	
+							<dt><?php echo __('Content') ?></dt>
+							<dd><?php echo html::chars($post->content) ?></dd>
+						</dl>
 					</div>
 					<div class="bottom">
 						<div class="left">
@@ -53,10 +51,10 @@
 					<div class="cb"></div>
 					<div class="content">
 						<div style="width: 40%; float: left;">
-							[<a href="<?php echo url::site('admin/pages') ?>">Anuluj</a>]
+							[<a href="<?php echo url::site('admin/pages') ?>"><?php echo __('Cancel') ?></a>]
 						</div>
 						<div style="width: 40%; float: right; text-align: right;">
-							<?php echo form::submit('send', 'Usuń') ?>
+							<?php echo form::submit('send', __('Delete')) ?>
 						</div>
 						<div class="cb"></div>
 					</div>

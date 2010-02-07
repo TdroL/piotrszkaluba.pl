@@ -3,11 +3,12 @@
 class Model_Page extends ORM
 {
 	public $_filters = array(
-		TRUE => array(
-			'trim'			=> NULL,
-		),
 		'title'	=> array(
 			'html::chars'	=> NULL,
+			'trim'			=> NULL,
+		),
+		'link' => array(
+			'trim'			=> NULL,
 		),
 	);
 

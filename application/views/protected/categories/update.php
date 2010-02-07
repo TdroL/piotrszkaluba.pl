@@ -1,7 +1,7 @@
 <div class="columns_1">
 	<div class="column">
 		<div class="title">
-			Edytuj kategorię
+			<?php echo __('Update category') ?>
 		</div>
 		<?php echo form::open('admin/categories/update.'.$post->id) ?>
 		<div>
@@ -19,7 +19,7 @@
 					</div>
 					<div class="cb"></div>
 					<div class="content">
-						<?php echo form::label('ititle', 'Tytuł') ?>
+						<?php echo form::label('ititle', __('Title')) ?>
 						<div>
 							<?php echo form::input('title', $post->title, array('id' => 'ititle')) ?>
 						</div>
@@ -44,7 +44,7 @@
 					</div>
 					<div class="cb"></div>
 					<div class="content">
-						<?php echo form::label('ilink', 'Link') ?>
+						<?php echo form::label('ilink', __('Link')) ?>
 						<div>
 							<?php echo form::input('link', $post->link, array('id' => 'ilink')) ?>
 						</div>
@@ -60,7 +60,7 @@
 			</div>
 			
 			<div>
-				<?php echo form::submit('send', 'Zatwierdź zmiany') ?>
+				<?php echo form::submit('send', __('Confirm')) ?>
 			</div>
 		<?php echo form::close() ?>
 		<div class="cb"></div>

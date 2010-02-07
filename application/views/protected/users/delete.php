@@ -1,7 +1,7 @@
 <div class="columns_1">
 	<div class="column">
 		<div class="title">
-			Usuń konto
+			<?php echo __('Delete user') ?>
 		</div>
 		<?php echo form::open('admin/users/delete.'.$post->id) ?>
 		<div>
@@ -19,14 +19,13 @@
 					</div>
 					<div class="cb"></div>
 					<div class="content">
-						Login:
-						<div>
-							<?php echo $post->username ?>
-						</div>
-						Nick:
-						<div>
-							<?php echo $post->nick ?>
-						</div>
+						<dl>
+							<dt><?php echo __('Login') ?></dt>
+							<dd><?php echo $post->username ?></dd>
+							
+							<dt><?php echo __('Nick') ?></dt>
+							<dd><?php echo $post->nick ?></dd>
+						</dl>
 					</div>
 					<div class="bottom">
 						<div class="left">
@@ -49,10 +48,10 @@
 					<div class="cb"></div>
 					<div class="content">
 						<div style="width: 40%; float: left;">
-							[<a href="<?php echo url::site('admin/users') ?>">Anuluj</a>]
+							[<a href="<?php echo url::site('admin/users') ?>"><?php echo __('Cancel') ?></a>]
 						</div>
 						<div style="width: 40%; float: right; text-align: right;">
-							<?php echo form::submit('send', 'Usuń') ?>
+							<?php echo form::submit('send', __('Delete')) ?>
 						</div>
 						<div class="cb"></div>
 					</div>

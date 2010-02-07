@@ -144,7 +144,7 @@ class Controller_Protected_Users extends Controller_Auth
 			$this->request->redirect($this->_index);
 		}
 
-		$post = new FormFields();
+		$post = new FormFields($orm);
 		$post->id = $id;
 
 		if(!empty($_POST) and !$this->session->get($_POST['sand'], FALSE))

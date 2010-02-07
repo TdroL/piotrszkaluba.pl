@@ -3,3 +3,4 @@
 /db
 /script
 /modules/sprig
+/application/config/auth.php

@@ -1,7 +1,7 @@
 <div class="columns_1">
 	<div class="column">
 		<div class="title">
-			Usuń kategorię
+			<?php echo __('Delete category') ?>
 		</div>
 		<?php echo form::open('admin/categories/delete.'.$post->id) ?>
 		<div>
@@ -19,17 +19,15 @@
 					</div>
 					<div class="cb"></div>
 					<div class="content">
-						<h3><b>UWAGA: usunięcie kategorii spowoduje usunięcie wszytkich obrazków do niej przypisanych!</b></h3>
+						<h3><b><?php echo __('WARNING: deletion of this category will remove all images connected to it!') ?></b></h3>
 						<dl>
-							<dt>Tytuł:</dt>
+							<dt><?php echo __('Title') ?></dt>
 							<dd><?php echo $post->title ?></dd>
-						</dl>
-						<dl>
-							<dt>Link:</dt>
+
+							<dt><?php echo __('Link') ?></dt>
 							<dd><?php echo date('d.m.Y H:i', $post->date) ?></dd>
-						</dl>
-						<dl>
-							<dt>Obrazków przypisanych:</dt>
+
+							<dt><?php echo __('Number of connected images') ?></dt>
 							<dd>
 								<?php echo $post->images->count_all() ?>
 							</dd>
@@ -56,10 +54,10 @@
 					<div class="cb"></div>
 					<div class="content">
 						<div style="width: 40%; float: left;">
-							[<a href="<?php echo url::site('admin/categories') ?>">Anuluj</a>]
+							[<a href="<?php echo url::site('admin/categories') ?>"><?php echo __('Cancel') ?></a>]
 						</div>
 						<div style="width: 40%; float: right; text-align: right;">
-							<?php echo form::submit('send', 'Usuń') ?>
+							<?php echo form::submit('send', __('Delete')) ?>
 						</div>
 						<div class="cb"></div>
 					</div>

@@ -1,7 +1,7 @@
 <div class="columns_1">
 	<div class="column">
 		<div class="title">
-			Usuń obrazek
+			<?php echo __('Delete image') ?>
 		</div>
 		<?php echo form::open('admin/images/delete.'.$post->id) ?>
 		<div>
@@ -20,15 +20,13 @@
 					<div class="cb"></div>
 					<div class="content">
 						<dl>
-							<dt>Tytuł:</dt>
+							<dt><?php echo __('Title') ?></dt>
 							<dd><?php echo $post->title ?></dd>
-						</dl>
-						<dl>
-							<dt>Data:</dt>
+
+							<dt><?php echo __('Date') ?></dt>
 							<dd><?php echo date('d.m.Y H:i', $post->date) ?></dd>
-						</dl>
-						<dl>
-							<dt>Kategoria:</dt>
+
+							<dt><?php echo __('Category') ?></dt>
 							<dd><?php echo $post->category->title ?></dd>
 						</dl>
 					</div>
@@ -53,10 +51,10 @@
 					<div class="cb"></div>
 					<div class="content">
 						<div style="width: 40%; float: left;">
-							[<a href="<?php echo url::site('admin/images') ?>">Anuluj</a>]
+							[<a href="<?php echo url::site('admin/images') ?>"><?php echo __('Cancel') ?></a>]
 						</div>
 						<div style="width: 40%; float: right; text-align: right;">
-							<?php echo form::submit('send', 'Usuń') ?>
+							<?php echo form::submit('send', __('Delete')) ?>
 						</div>
 						<div class="cb"></div>
 					</div>

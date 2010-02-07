@@ -30,10 +30,8 @@ return array(
 	'Nick'				=> 'Nick',
 	'Email'				=> 'Email',
 	'Access'			=> 'Dostęp',
-	// messages
-	'No images'							=> 'Brak obrazków w tej kategorii',
-	'Portfolio: message from :email'	=> 'Portfolio: kontakt od :email',
-	'Log is empty'						=> 'Dziennik jest pusty',
+	'Date'				=> 'Data',
+
 	// errors
 	'Internal error: :param1'			=> 'Wystąpił błąd serwera: :param1',
 	'page ":link" does not exists'		=> 'Strona ":link" nie istnieje',
@@ -60,4 +58,77 @@ return array(
 	':field must contain only letters, digits, dashes and underscores characters'	=> 'Pole :field może zawierać jedynie litery (bez polskich znaków), cyfry, myślniki i pokreślenia',
 	':field must be a valid email'						=> 'Pole :field musi być poprawnym adresem email',
 	'Server could not send your mail, please try again later'	=> 'Serwer nie mógł wysłać twojej wiadomości, spróbuj ponownie później',
+	
+	// pagination
+	'First'		=> 'Pierwsza',
+	'Previous'	=> 'Poprzednie',
+	'Next'		=> 'Następne',
+	'Last'		=> 'Ostatnia',
+	'Loading'	=> 'Ładuję',
+	
+	// admin
+	'Administration'			=> 'Panel administracyjny',
+	'Home page'					=> 'Strona główna',
+	'You are logged as: :nick'	=> 'Jesteś zalogowany jako: :nick',
+	'Logout'					=> 'Wyloguj',
+	'Home'						=> 'Home',
+	'Images'					=> 'Obrazki',
+	'Categories'				=> 'Kategorie',
+	'Pages'						=> 'Strony',
+	'Users'						=> 'Konta',
+	'Logs'						=> 'Logi',
+	
+	'Options'					=> 'Opcje',
+	'Rendered in :time seconds using :memory of memory.' => 'Wygenerowno w :time sekundy używając :memory KB pamięci.',
+	
+		// category
+	'Create category'			=> 'Dodaj kategorię',
+	'Update category'			=> 'Edytuj kategorię',
+	'Delete category'			=> 'Usuń kategorię',
+	'No. of images'				=> 'Liczba obrazków',
+	'WARNING: deletion of this category will remove all images connected to it!'	=> 'UWAGA: usunięcie kategorii spowoduje usunięcie wszytkich obrazków do niej przypisanych!',
+	'Number of connected images'		=> 'Liczba obrazków przypisanych',
+	'Show images from category: :title'	=> 'Pokaż obrazki z kategori: :title',
+	
+		// image
+	'Create image'			=> 'Dodaj obrazek',
+	'Update image'			=> 'Edytuj obrazek',
+	'Delete image'			=> 'Usuń obrazek',
+	'Categories:'			=> 'Kategorie:',
+	'Show all images'		=> 'Pokaż wszystkie obrazki',
+	'Thumb'					=> 'Miniatura',
+	'Leave current:'		=> 'Zostaw aktualny:',
+	'Upload new:'			=> 'Załaduj nowy:',
+	
+		// main
+	'Shortcuts'				=> 'Shortcuts',
+	'Login:'				=> 'Login:',
+	'Password:'				=> 'Hasło:',
+	
+		// page
+	'Create page'			=> 'Dodaj stronę',
+	'Update page'			=> 'Edytuj stronę',
+	'Delete page'			=> 'Usuń stronę',
+	
+		// user
+	'Create user'			=> 'Dodaj konto',
+	'Update user'			=> 'Edytuj konto',
+	'Delete user'			=> 'Usuń konto',
+	'Change password'		=> 'Zmień hasło',
+	'Activate'				=> 'Aktywuj',
+	'Deactivate'			=> 'Deaktywuj',
+	'Required 4 to 32 characters'	=> 'Wymagane 4 do 32 znaków',
+	'Required 5 to 42 characters'	=> 'Wymagane 5 do 42 znaków',
+	'Last logged'			=> 'Ostatnio zalogowani',
+	
+	// views
+	'No images'							=> 'Brak obrazków w tej kategorii',
+	'Portfolio: message from :email'	=> 'Portfolio: kontakt od :email',
+	'Log is empty'						=> 'Dziennik jest pusty',
+	'Error'								=> 'Błąd',
+	'Create'							=> 'Dodaj',
+	'Confirm'							=> 'Zatwierdź zmiany',
+	'Delete'							=> 'Usuń',
+	'Update'							=> 'Edytuj',
+	'Cancel'							=> 'Anuluj',
 );

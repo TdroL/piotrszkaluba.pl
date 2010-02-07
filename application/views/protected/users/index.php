@@ -1,6 +1,6 @@
 <div class="columns_1">
 	<div class="column">
-		<?php echo html::anchor('admin/users/create', 'Dodaj konto', array('class' => 'add')); ?>
+		<?php echo html::anchor('admin/users/create', __('Create user'), array('class' => 'add')); ?>
 		<br />
 		<br />
 		<div>
@@ -8,16 +8,16 @@
 				<thead>
 					<tr>
 						<td<?php if($field == 'nick') echo ' class="imp_yel"' ?>>
-							Nick
+							<?php echo __('Nick') ?>
 							<a href="<?php echo url::site('admin/users/sort/nick/asc') ?>"><?php echo html::image('media/admin/img/arrow_up.png') ?></a>
 							<a href="<?php echo url::site('admin/users/sort/nick') ?>"><?php echo html::image('media/admin/img/arrow_down.png') ?></a>
 						</td>
 						<td<?php if($field == 'username') echo ' class="imp_yel"' ?>>
-							Login
+							<?php echo __('Login') ?>
 							<a href="<?php echo url::site('admin/users/sort/username/asc') ?>"><?php echo html::image('media/admin/img/arrow_up.png') ?></a>
 							<a href="<?php echo url::site('admin/users/sort/username') ?>"><?php echo html::image('media/admin/img/arrow_down.png') ?></a>
 						</td>
-						<td class="imp_blue">Opcje</td>
+						<td class="imp_blue"><?php echo __('Options') ?></td>
 					</tr>
 				</thead>
 				<tbody>
@@ -34,18 +34,18 @@
 						</td>
 						<td<?php if($field == 'username') echo ' class="imp_yel"' ?>><?php echo $v->username ?></td>
 						<td class="imp_blue">
-							<a href="<?php echo url::site('admin/users/update.'.$v->id) ?>"><?php echo html::image('media/admin/img/edit.png', array('alt' => 'Edytuj', 'title' => 'Edytuj')) ?></a>
+							<a href="<?php echo url::site('admin/users/update.'.$v->id) ?>"><?php echo html::image('media/admin/img/edit.png', array('alt' => 'Edytuj', 'title' => __('Update'))) ?></a>
 <?php if($v->id != $auth->id): ?>
-							<a href="<?php echo url::site('admin/users/delete.'.$v->id) ?>"><?php echo html::image('media/admin/img/erese.png', array('alt' => 'Usuń', 'title' => 'Usuń')) ?></a>
+							<a href="<?php echo url::site('admin/users/delete.'.$v->id) ?>"><?php echo html::image('media/admin/img/erese.png', array('alt' => 'Usuń', 'title' => __('Delete'))) ?></a>
 <?php else: ?>
-							<?php echo html::image('media/admin/img/erese.png', array('alt' => 'Usuń', 'title' => 'Usuń')) ?>
+							<?php echo html::image('media/admin/img/erese.png', array('alt' => 'Usuń', 'title' => __('Delete'))) ?>
 
 <?php endif ?>
-							<?php echo html::anchor('admin/users/password.'.$v->id, 'Zmień hasło') ?>
+							<?php echo html::anchor('admin/users/password.'.$v->id, __('Change password')) ?>
 <?php if($v->has('roles', $login)): ?>
-							<?php echo html::anchor('admin/users/deactivate.'.$v->id, 'Deaktywuj') ?>
+							<?php echo html::anchor('admin/users/deactivate.'.$v->id, __('Deactivate')) ?>
 <?php else: ?>
-							<?php echo html::anchor('admin/users/activate.'.$v->id, 'Aktywuj') ?>
+							<?php echo html::anchor('admin/users/activate.'.$v->id, __('Activate')) ?>
 <?php endif ?>
 						</td>
 					</tr>

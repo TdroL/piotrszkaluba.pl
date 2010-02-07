@@ -1,6 +1,6 @@
 
 		<div class="title">
-			Ostatnio zalogowani
+			<?php echo __('Last logged') ?>
 		</div>
 		<div class="box_1">
 			<div class="top">

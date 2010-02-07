@@ -38,8 +38,8 @@
 	</div>
 	<div id="fotter">
 		<div class="center">
-			Copyright 2008-2010 Piotr Szkałuba. Wszelkie prawa zastrzeżone<br />
-			<?php echo html::image('media/images/pic/fot.gif', array('alt' => '')) ?>
+			Copyright 2008-2010 Piotr Szkałuba. Wszelkie prawa zastrzeżone.<br />
+			<?php echo html::image('media/images/pic/fot.gif', array('alt' => 'Piotr Szkałuba')) ?>
 		</div>
 	</div>
 

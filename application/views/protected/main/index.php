@@ -1,7 +1,7 @@
 <div class="columns_2">
 	<div class="column column_menu">
 		<div class="title">
-			Shortcuts
+			<?php echo __('Shortcuts') ?>
 		</div>
 		<div class="box_1">
 			<div class="top">
@@ -14,10 +14,10 @@
 			<div class="content">
 				<ul>
 <?php if($auth->has_role('images')): ?>
-					<li><a href="<?php echo url::site('admin/images/add') ?>">Dodaj obrazek</a></li>
+					<li><a href="<?php echo url::site('admin/images/add') ?>"><?php echo __('Create image') ?></a></li>
 <?php endif ?>
 <?php if($auth->has_role('categories')): ?>
-					<li><a href="<?php echo url::site('admin/categories/add') ?>">Dodaj kategorię</a></li>
+					<li><a href="<?php echo url::site('admin/categories/add') ?>"><?php echo __('Create category') ?></a></li>
 <?php endif ?>
 				</ul>
 			</div>
