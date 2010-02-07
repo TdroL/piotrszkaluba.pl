@@ -8,5 +8,5 @@
 				<a href="<?php echo $page->url($next_page) ?>"><span><?php echo __('Next') ?></span></a>
 <?php endif ?>
 			</div>
-			
+
 			<div id="loader"><span><?php echo __('Loading') ?></span></div>
