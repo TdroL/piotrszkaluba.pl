@@ -8,7 +8,10 @@
 				<div class="box">
 					<a href="<?php echo url::site('media/images/'.$v->image) ?>" title="<?php echo $v->title ?>" class="fancy">
 						<?php echo html::image('media/images/'.$v->thumb, array('alt' => $v->title, 'title' => $v->title)) ?>
+						<div class="zoom"></div>
+						<div class="info"></div>
 					</a>
+					<div class="description"><div><?php echo $v->description ?></div></div>
 				</div>
 <?php endforeach ?>
 				<div class="cb"></div>

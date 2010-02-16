@@ -12,6 +12,7 @@
 	<?php echo html::style('media/fancybox.css') ?>
 	<?php echo html::script('media/js/jquery-1.4.1.min.js') ?>
 	<?php echo html::script('media/js/jquery.fancybox-1.2.6.pack.js') ?>
+	<?php echo html::script('media/js/jquery.easing.1.3.js') ?>
 	<?php echo html::script('media/js/images.js') ?>
 </head>
 <body>
