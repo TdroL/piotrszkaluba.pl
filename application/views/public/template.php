@@ -10,10 +10,6 @@
 	<meta name="keywords" content="Piotr Szkaluba, webdesign, tworzenie stron www,projektowanie, portoflio, portoflio lublin, webdesign lublin ">
 	<?php echo html::style('media/style.css') ?>
 	<?php echo html::style('media/fancybox.css') ?>
-	<?php echo html::script('media/js/jquery-1.4.1.min.js') ?>
-	<?php echo html::script('media/js/jquery.fancybox-1.2.6.pack.js') ?>
-	<?php echo html::script('media/js/jquery.easing.1.3.js') ?>
-	<?php echo html::script('media/js/images.js') ?>
 </head>
 <body>
 	<div id="top">
@@ -43,7 +39,10 @@
 			<?php echo html::image('media/images/pic/fot.gif', array('alt' => 'Piotr Szkałuba')) ?>
 		</div>
 	</div>
-
+<?php echo html::script('media/js/jquery-1.4.1.min.js') ?>
+<?php echo html::script('media/js/jquery.fancybox-1.2.6.pack.js') ?>
+<?php echo html::script('media/js/jquery.easing.1.3.js') ?>
+<?php echo html::script('media/js/images.js') ?>
 <script type="text/javascript">
 var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
 document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
