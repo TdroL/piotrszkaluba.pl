@@ -43,6 +43,10 @@ body {background: #3d3d3d ; font-family: "Trebuchet MS";}
 
 #content .portfolio {float: left;}
 #content .portfolio .box { width: 900px; height: 135px;margin: 15px 0;}
+#content .portfolio .box a {text-decoration: none; color: black; font-size: 11px;}
+
+
+
 #content .portfolio .cv {margin-bottom: 30px;font-size: 12px;padding: 30px;border-right: 1px solid #7c7c7c ;border-bottom: 1px solid #7c7c7c ;background: url('images/pic/bgCv.gif') ; width: 840px;margin-top: 20px; margin-left: 41px}
 #content .portfolio .cv a {text-decoration: none; color: #ff6c00;}
 #content .portfolio .cv a:hover {text-decoration: underline;}
@@ -56,8 +60,8 @@ body {background: #3d3d3d ; font-family: "Trebuchet MS";}
 #content .portfolio .cv .kontakt textarea {height: 300px;border: 1px solid #c1c1c1 ;font-size: 12px;padding: 3px;width: 560px;}
 
 #content .pagination {text-align: center;padding-bottom: 10px;}
-#content .pagination a {color: black; text-decoration: none; background: white; padding: 1px 4px;border: 1px solid gray;font-size: 11px;}
-#content .pagination a:hover, #content .pagination a.on {color: white; background: black;}
+#content .pagination a {color: black; text-decoration: none; background: white; padding: 1px 4px;border: 1px solid #ae4a00;font-size: 11px;}
+#content .pagination a:hover, #content .pagination a.on {color: white; background: #ff6c00;font-weight: bold;}
 
 ul.error, div.success {
 	font-size: 14px;
