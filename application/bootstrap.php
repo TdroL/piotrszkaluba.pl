@@ -179,6 +179,7 @@ if (!Route::cache())
 			'directory'		=> 'protected',
 			'controller'	=> 'main',
 			'action' 		=> 'index',
+			'id'			=> NULL,
 			'field'			=> NULL,
 			'position'		=> NULL,
 			'category'		=> NULL,
