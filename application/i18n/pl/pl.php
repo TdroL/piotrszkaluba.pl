@@ -19,6 +19,7 @@ return array(
 	'Thumb'				=> 'Miniatura',
 	'Image'				=> 'Obraz',
 	'Category'			=> 'Kategoria',
+	'Position'			=> 'Pozycja',
 	'Title'				=> 'Tytuł',
 	'URL'				=> 'Adres',
 	'Description'		=> 'Opis',
@@ -99,6 +100,9 @@ return array(
 	'Thumb'					=> 'Miniatura',
 	'Leave current:'		=> 'Zostaw aktualny:',
 	'Upload new:'			=> 'Załaduj nowy:',
+	'After'					=> 'Za',
+	'Before'				=> 'Przed',
+	
 	
 		// main
 	'Shortcuts'				=> 'Shortcuts',

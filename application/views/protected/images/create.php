@@ -62,6 +62,35 @@
 			</div>
 
 			<div class="box_1">
+				<div class="inp_1">
+					<div class="top">
+						<div class="left">
+						</div>
+						<div class="right">
+						</div>
+					</div>
+					<div class="cb"></div>
+					<div class="content">
+						<label for="iposition"><?php echo __('Position') ?></label>
+						<div>
+							<?php echo form::radio('placement', 'after', $post->placement == 'after' or empty($post->placement), array('id' => 'iplacement_after')) ?> <?php echo form::label('iplacement_after', __('After')) ?><br/>
+							<?php echo form::radio('placement', 'before', $post->placement == 'before', array('id' => 'iplacement_before')) ?> <?php echo form::label('iplacement_before', __('Before')) ?><br/>
+						</div>
+						<div>
+							<?php echo form::select('position', $positions, $post->position, array('id' => 'iposition')) ?>
+						</div>
+					</div>
+					<div class="bottom">
+						<div class="left">
+						</div>
+						<div class="right">
+						</div>
+						<div class="cb"></div>
+					</div>
+				</div>
+			</div>
+
+			<div class="box_1">
 				<div class="textarea_1">
 					<div class="top">
 						<div class="left">

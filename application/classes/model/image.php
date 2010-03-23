@@ -23,12 +23,16 @@ class Model_Image extends ORM
 		'category_id' => array(
 			'not_empty'		=> NULL,
 		),
+		'placement' => array(
+			'in_array'		=> array(array('before', 'after', 'none'))
+		),
 	);
 	
 	protected $_callbacks = array(
 		'category_id'	=> array('category_exists'),
 		'thumb_action'	=> array('image_upload'),
 		'image_action'	=> array('image_upload'),
+		'position'		=> array('prepare_position'),
 	);
 	
 	protected $_upload = array(
@@ -74,5 +78,18 @@ class Model_Image extends ORM
 			$post->image_action = 'actual';
 			$post->image_actual = $post->image;
 		}
+	}
+	
+	public function prepare_position(Validate $array, $field)
+	{
+		if($array['placement'] == 'none')
+		{
+			return TRUE;
+		}
+		
+		$placement = $array['placement'];
+		$position = $array[$field];
+		
+		$images = ORM('image')->find_all();
 	}
 }

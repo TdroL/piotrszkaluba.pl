@@ -14,10 +14,10 @@
 			<div class="content">
 				<ul>
 <?php if($auth->has_role('images')): ?>
-					<li><a href="<?php echo url::site('admin/images/add') ?>"><?php echo __('Create image') ?></a></li>
+					<li><a href="<?php echo url::site('admin/images/create') ?>"><?php echo __('Create image') ?></a></li>
 <?php endif ?>
 <?php if($auth->has_role('categories')): ?>
-					<li><a href="<?php echo url::site('admin/categories/add') ?>"><?php echo __('Create category') ?></a></li>
+					<li><a href="<?php echo url::site('admin/categories/create') ?>"><?php echo __('Create category') ?></a></li>
 <?php endif ?>
 				</ul>
 			</div>

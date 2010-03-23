@@ -42,8 +42,17 @@ class Controller_Protected_Images extends Controller_Auth
 		$this->content->bind('post', $post);
 		$this->content->bind('errors', $errors);
 		$this->content->categories = ORM('category')->find_all();
+		$this->content->bind('positions', $positions);
 		
 		$post = new FormFields($_POST);
+		
+		$positions = array();
+		$images = ORM('image')->order_by('position', 'DESC')->find_all();
+
+		foreach($images as $k => $v)
+		{
+			$positions[$v->position] = $v->title;
+		}
 		
 		if(!empty($_POST) and !$this->session->get($_POST['sand'], FALSE))
 		{
