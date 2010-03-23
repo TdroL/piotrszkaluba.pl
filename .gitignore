@@ -1,3 +1,5 @@
+.htaccess
+/application/bootstrap.php
 /new
 /_backups
 /db
