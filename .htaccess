@@ -4,23 +4,6 @@ RewriteEngine On
 # Installation directory
 RewriteBase /WIP/morgin/
 
-<FilesMatch "\.js$">
-	AddHandler application/x-httpd-php .js
-	php_value default_mimetype "text/javascript"
-	Header append Cache-Control "proxy-revalidate"
-</FilesMatch>
-
-<FilesMatch "\.css$">
-	AddHandler application/x-httpd-php .css
-	php_value default_mimetype "text/css"
-	Header append Cache-Control "proxy-revalidate"
-</FilesMatch>
-
-
-SetOutputFilter DEFLATE
-Header unset ETag
-FileETag None
-php_value output_handler ob_gzhandler
 
 # Protect hidden files from being viewed
 <Files .*>
@@ -37,3 +20,4 @@ RewriteCond %{REQUEST_FILENAME} !-d
 
 # Rewrite all other URLs to index.php/URL
 RewriteRule .* index.php/$0 [PT]
+
