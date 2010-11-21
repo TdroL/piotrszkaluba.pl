@@ -1,0 +1,337 @@
+
+.clear {
+	clear: both;
+	height: 0;
+	margin: 0;
+	padding: 0;
+}
+
+a {
+	color: #00f;
+}
+
+header,
+footer,
+aside,
+nav,
+article,
+section,
+hgroup {
+	display: block;
+}
+
+body {
+	font-family: "Segoe UI", Candara, "Bitstream Vera Sans", "DejaVu Sans", "Bitstream Vera Sans", "Trebuchet MS", Verdana, "Verdana Ref", sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: Constantia, "Lucida Bright", Lucidabright, "Lucida Serif", Lucida, "DejaVu Serif", "Bitstream Vera Serif", "Liberation Serif", Georgia, serif;
+}
+
+textarea {
+	font-family: inherit;
+	font-size: inherit;
+}
+
+#login-form {
+	width: 200px;
+	margin: 150px auto 0;
+}
+
+#login-form input[type=text],
+#login-form input[type=password] {
+	width: 190px;
+}
+
+#login-form label {
+	display: block;
+	padding: 0;
+	border: 0;
+}
+
+#container {
+	margin: 0 auto;
+	width: 940px;
+	padding: 10px;
+}
+
+input, textarea {
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	padding: 3px;
+}
+
+#container>header nav ul {
+	list-style: none;
+	font-size: 1.4em;
+	line-height: 1.2;
+	height: 1.2em;
+	margin-top: 2em;
+	border-bottom: 4px solid #eee;
+}
+
+#container>header nav li {
+	float: left;
+	margin-right: 20px;
+	padding: 0;
+	border-bottom: 4px solid #aaa;
+}
+
+#container>header nav li:hover {
+	border-color: #aaa;
+}
+
+#container>header nav li a:hover {
+	text-decoration: none;
+}
+
+#container>header nav li:last-of-type {
+	float: right;
+	margin: 0;
+}
+
+#container>header nav li:last-of-type a {
+	color: #f00;
+}
+
+#container .option-create {
+	float: right;
+	margin: 0 0 10px 0;
+}
+#container .option-create a {
+	display: block;
+	padding: 5px;
+	font-size: 1em;
+	font-weight: bold;
+	border: 1px solid #00f;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+}
+
+#container .option-create a:hover {
+	background-color: #00f;
+	color: #fff;
+	text-decoration: none;
+}
+
+#container ul.horizontal {
+	list-style: none;
+}
+
+#container ul.horizontal li {
+	float: left;
+	padding: 5px 10px;
+	border-radius: 10px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+}
+
+#container ul.horizontal li:hover,
+#container ul.horizontal li.active {
+	background-color: #efefef;
+}
+
+#container article {
+	border-top: 1px solid #ccc;
+	padding: 10px 5px;
+	clear: both;
+}
+
+#container article:hover {
+	background-color: #efefef;
+}
+
+#container article>header div {
+	float: left;
+	width: 220px;
+	margin-left: 20px;
+	word-wrap: break-word;
+}
+
+#container article>header div:first-of-type,
+#container article>header div.new-line {
+	margin-left: 0;
+}
+
+#container article div>span:first-of-type {
+	font-weight: bold;
+}
+
+#container article>header div.longer {
+	width: 320px;
+}
+
+#container article>header div.longer+div.options {
+	width: 90px;
+}
+
+#container article>header div.options {
+	float: right;
+	width: 210px;
+}
+
+#container article>header div.options.longer {
+	width: 320px;	
+}
+
+#container article>header div.options ul {
+	list-style: none;
+	float: right;
+	margin: 0;
+}
+
+#container article>header div.options li {
+	display: inline;
+}
+
+#container article>header div.options a {
+	padding: 1px 3px;
+}
+
+#container article>header div.options a.red {
+	color: #f00;
+}
+
+#container article>header div.options a:hover {
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	color: #fff;
+	background-color: #00f;
+	text-decoration: none;
+}
+
+#container article>header div.options a.red:hover {
+	background-color: #f00;
+}
+
+#container article>div {
+	clear: both;
+}
+
+#container article>div>span:first-of-type {
+	display: block;
+}
+
+#container article>div>span+span {
+	display: block;
+	margin-left: 20px;
+	padding: 0 60px 0 10px;
+	border-left: 2px solid #ccc;
+}
+
+#container .form form {
+	padding: 20px 0;
+}
+
+#container .form .errors,
+#container .form .success {
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	padding: 5px 10px;
+	margin: 0 0 20px 160px;
+	width: 278px;
+}
+
+#container .form .success {
+	border: 1px solid #3eae3e;
+	background-color: #d4ffd4;
+	color: #3eae3e;
+}
+
+#container .form .errors {
+	border: 1px solid #f00;
+	background-color: #ffebeb;
+	color: #f00;
+}
+
+#container .form .errors ul {
+	padding-left: 20px;
+	color: #f00;
+	margin: 0;
+}
+
+#container .form label {
+	display: block;
+	float: left;
+	width: 140px;
+	padding-right: 20px;
+	text-align: right;
+	font-weight: bold;
+}
+
+#container .form span label {
+	display: inline;
+	float: none;
+	width: auto;
+	padding: 0 20px 0 0;
+	text-align: left;
+	font-weight: normal;
+}
+
+#container .form .annotation {
+	display: block;
+	padding-left: 160px;
+}
+
+#container .form input[type=text],
+#container .form input[type=password] {
+	width: 292px;
+}
+
+#container .form textarea {
+	width: 612px;
+	height: 200px;
+}
+
+#container .form input[type=submit] {
+	width: 140px;
+}
+
+#container .form p,
+#container .form>div {
+	clear: both;
+}
+
+#container .form label+span,
+#container .form label+div {
+	float: left;
+	display: block;
+	padding: 0 0 0.8125em;
+}
+
+#container .form p.submit {
+	margin-left: 160px;
+}
+
+#container .columns-3 {
+	padding: 5px;
+}
+
+#pointer {
+	display: inline;
+	padding-right: 1.3em;
+	cursor: pointer;
+	background: transparent url('../images/arrows/pointer.png') no-repeat bottom right;
+}
+
+#pointer.unfold {
+	background-position: top right;
+}
+
+#container .columns-3 .roller {
+	overflow: hidden;
+}
+
+#container .columns-3 .column {
+	float: left;
+	width: 309px;
+}
+
+#container .columns-3 ul {
+	padding: 0 20px;
+}

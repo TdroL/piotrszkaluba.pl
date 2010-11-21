@@ -1,0 +1,181 @@
+* {
+	outline: none;
+	border: 0;
+	padding: 0;
+	margin: 0;
+}
+.clear, .cb {
+	clear: both;
+	visibility: hidden;
+}
+
+a {
+	text-decoration: none;
+}
+
+header,
+footer,
+aside,
+nav,
+article,
+section,
+hgroup {
+	display: block;
+}
+
+body {
+	font-family: Verdana, Geneva, "Bitstream Vera Sans", "DejaVu Sans", sans-serif;
+	background-color: #F5F5F5;
+}
+
+body>header {
+	background: url(../images/backgrounds/top_menu.gif) repeat-x;
+}
+
+body>header h1 {
+	display: none;
+}
+
+body>header nav {
+	margin: 0 auto;
+	width: 950px;
+	padding: 20px 0;
+}
+
+body>header li {
+	display: inline;
+	margin-right: 50px;
+}
+
+body>header li a,
+body>header li span {
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	font: 12px/1.5 "Trebuchet MS", Helvetica, sans-serif;
+	color: #545454;
+}
+
+body>header a:hover {
+	color: #2a2a2a;
+}
+
+#last_update {
+	height: 55px;
+	background: url(../images/backgrounds/color_up.jpg) center;
+}
+
+#last_update p {
+	margin: 0 auto;
+	width: 448px;
+	color: #fff;
+	font-size: 11px;
+	text-align: right;
+	padding-top: 18px;
+}
+
+#last_update a {
+	color: #fff;
+}
+
+#last_update a:hover {
+	color: #046f69;
+}
+
+#content {
+	width: 950px;
+	margin: 20px auto 0;
+	background: url(../images/backgrounds/content_bg.jpg) no-repeat right bottom;
+}
+
+#content h1 {
+	font: 12px/1.3 "Trebuchet MS", Helvetica, sans-serif;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	color :#545454;
+	background: url(../images/backgrounds/line.png) no-repeat center bottom ;
+	padding-bottom: 5px;
+	margin-bottom: 10px;
+}
+
+#content h2 {
+	text-transform: uppercase;
+	font: normal 16px/1.5 Verdana, Geneva, "Bitstream Vera Sans", "DejaVu Sans", sans-serif;
+	font-size: 16px;
+	background: url(../images/backgrounds/line.png) no-repeat center bottom;
+}
+
+#content .project {
+	text-align: center;
+	background: url(../images/backgrounds/line.png) no-repeat center bottom;
+	font-size: 11px;
+	color: #2a2a2a;
+}
+
+#content .project.latest {
+	background: none;
+}
+
+#content .project section,
+#content .project p {
+	text-align: left;
+}
+
+#content .project h2 {
+	font-size: 11px;
+	font-weight: bold;
+	margin-bottom: 5px;
+	background-image: none;
+}
+
+#about-me {
+	height: 195px;
+	padding-top: 10px;
+	font-size: 11px;
+	text-align: justify;
+	color: #3d3d3d;
+	line-height: 1.73;
+}
+
+#about-me img {
+	float: left;
+	margin: 18px 20px 0 0;
+}
+#about-me p {
+	padding-top: 20px;
+	float: left;
+	width: 740px;
+}
+
+#contact {
+	background: #fff;
+	height: 35px;
+	width: 920px;
+	padding: 23px 30px 0 0;
+	margin: 0 auto;
+	color: #30c2b6;
+	font-size: 11px;
+	text-align: right;
+}
+
+#contact a, #contact span {
+	color: #404040;
+}
+
+#contact a:hover {
+	text-decoration: underline;
+}
+
+#copyrights {
+	height: 55px;
+	background: url(../images/backgrounds/color_down.jpg) center;
+}
+
+#copyrights p {
+	width: 748px;
+	padding: 16px 20px 0 280px;
+	margin: 0 auto;
+	font-size: 10px;
+	color: #fff;
+	text-align: left;
+}
+

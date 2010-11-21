@@ -1,8 +1,8 @@
-.htaccess
-/application/bootstrap.php
-/new
-/_backups
-/db
-/script
-/modules/sprig
-/application/config/auth.php
+Icon?
+.DS_Store
+.svn
+code_coverage
+*~
+*.swp
+coverage
+kohana_release

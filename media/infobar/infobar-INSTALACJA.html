@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pl">
+<head>
+ <title>Infobar</title>
+ <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+ <style type="text/css">
+    html {word-wrap: break-word; background: white; color: black; font: 84%/1.2 sans-serif;}
+    dt {font-weight: bold; margin-top: 1em;}
+    var,em,var a {color: brown; font-style: normal;}
+    em {font-size: 1.1em; font-weight: bold;}
+    pre,code {color: blue;}
+    pre {margin-left: 5em;}
+    pre b {color: red;}
+ </style>
+</head>
+<body>
+<!--[if lt IE 8]><link href=infobar.css rel=stylesheet><div id=infobar><a href=http://browsehappy.pl/infobar>
+Internet Explorer nie potrafi poprawnie wyświetlić tej strony. Kliknij tutaj, aby dowiedzieć się więcej...
+</a></div><div id=viewplot><script src=infobar.js></script><![endif]-->
+ <h1>Infobar <a href="http://browsehappy.pl/infobarwebmaster">BrowseHappy.pl</a>, wersja 1.06</h1>
+
+ <h2>Instalacja</h2>
+
+ <p>Aby umieścić infobar na swojej stronie internetowej, musisz:</p>
+
+ <ul>
+  <li>wgrać pliki <var>infobar.js</var>, <var>infobar.css</var> i <var>infobar.gif</var> na swój serwer,</li>
+
+  <li>umieścić jeden z poniższych fragmentów kodu wewnątrz stron, które chcesz, żeby miały pasek informacyjny.</li>
+ </ul>
+
+ <p>Wersja dla wszystkich aktualnie używanych wersji Internet Explorera:</p>
+ <pre>
+&lt;!--[if lt IE 8]&gt;&lt;link <var>href=infobar.css</var> rel=stylesheet&gt;
+&lt;div id=infobar&gt;&lt;a href=http://browsehappy.pl/infobar&gt;
+Internet Explorer nie potrafi poprawnie wyświetlić tej strony. Kliknij tutaj, aby dowiedzieć się więcej...
+&lt;/a>&lt;/div&gt;&lt;div id=viewplot&gt;&lt;script <var>src=infobar.js</var>&gt;&lt;/script&gt;&lt;![endif]--&gt;
+</pre>
+<p>Wersja widoczna <strong>tylko</strong> w Internet Explorer <strong>6</strong>:</p>
+ <pre>
+&lt;!--[if <var>IE 6</var>]&gt;&lt;link href=infobar.css rel=stylesheet&gt;
+&lt;div id=infobar&gt;&lt;a href=http://browsehappy.pl/infobar&gt;
+Internet Explorer nie potrafi poprawnie wyświetlić tej strony. Kliknij tutaj, aby dowiedzieć się więcej...
+&lt;/a>&lt;/div&gt;&lt;div id=viewplot&gt;&lt;script src=infobar.js&gt;&lt;/script&gt;&lt;![endif]--&gt;
+</pre>
+ <p>Wersja dla wszystkich Explorerów, ale pokazująca się średnio <strong>tylko w 2 na 10 wyświetleń</strong> strony (w zaznaczonym parametrze możesz zmienić częstotliwość między 1, a 9):</p>
+<pre>
+&lt;!--[if lt IE 8]&gt;&lt;link href=infobar.css rel=stylesheet&gt;
+&lt;div id=infobar <var>s=2</var>&gt;&lt;a href=http://browsehappy.pl/infobar&gt;
+Internet Explorer nie potrafi poprawnie wyświetlić tej strony. Kliknij tutaj, aby dowiedzieć się więcej...
+&lt;/a>&lt;/div&gt;&lt;div id=viewplot&gt;&lt;script src=infobar.js&gt;&lt;/script&gt;&lt;![endif]--&gt;
+</pre>
+ <p>Jeśli zajdzie potrzeba zmiany ścieżki do plików infobaru, zmień fragmenty <var>href=infobar.css</var> oraz <var>src=infobar.js</var>.</p>
+ <p>Oto przykład, gdzie wkleić kod:</p>
+ <pre>
+&lt;html&gt;
+    &lt;head&gt;
+        ...
+    &lt;/head&gt;
+    &lt;body&gt;
+        <b>&lt;!-- TUTAJ UMIEŚĆ KOD --&gt;</b>
+        &lt;p&gt;Treść twojej strony musi zaczynać się za nim&lt;/p&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</pre>
+<p>Ta instrukcja sama w sobie jest przykładem - zobacz źródło tego pliku.</p>
+
+ <h2>Problemy</h2>
+
+ <p>Jeśli kod zostanie źle umieszczony albo pliki nie będą wgrane do odpowiedniego katalogu, mogą pojawić się następujące problemy:</p>
+
+ <dl>
+  <dt>Pasek jest zwykłym tekstem i nie ma tła:</dt>
+
+  <dd>
+   <p>Upewnij się, że pliki <var>infobar.css</var> i <var>infobar.gif</var> są w tym samym katalogu, co strona, na której ma się znajdować.</p>
+  </dd>
+
+  <dt>Pasek działa na głównej stronie, a nie działa na podstronach:</dt>
+
+  <dd>
+   <p>Jeśli chcesz użyć jednej kopii tych plików dla wszystkich podstron, to we wklejanym fragmencie kodu popraw ścieżki do nich - np. zmień <var>href=infobar.css</var> na <var>href=<em>/</em>infobar.css</var>, co będzie wczytywało plik z katalogu głównego Twojej strony. Jeśli to nie zadziała, to spróbuj zmienić <var>href=infobar.css</var> na <var>href=<em>../</em>infobar.css</var> na podstronach.</p>
+
+   <p><strong>Uwaga:</strong> W analogiczny sposób zmień też <var>src=infobar.js</var>!</p>
+  </dd>
+
+  <dt>W komunikacie zamiast polskich znaków są dziwne znaczki:</dt>
+
+  <dd>
+   <p>Kod wklejany na stronę WWW musi mieć kodowanie polskich znaków takie samo jak Twoja strona. <a href="http://osiolki.net/faq/kodowanie">Więcej o kodowaniu znaków</a>.</p>
+  </dd>
+
+  <dt>Pasek burzy układ strony:</dt>
+
+  <dd>
+   <p>Upewnij się, że fragment kodu jest wklejony zaraz ZA tagiem &lt;body&gt;. Jeśli potrzebujesz mieć ustawiony margines dla <code>&lt;body&gt;</code>, musisz go ustawić dodatkowo w pliku <var><a href="infobar.css">infobar.css</a></var> zgodnie z zamieszczonymi tam wskazówkami.</p>
+   <p>Strona nie może mieć błędnie pozamykanych tagów <code>&lt;div&gt;.</code>
+   <p>Jeśli mimo poprawnego umieszczenia kodu i plików infobar burzy układ strony, <a href="http://browsehappy.pl/kontakt">daj znać</a>.</p>
+   </dd>
+   <dt>W pozostałych przypadkach...</dt>
+   <dd><p>Zapraszamy na <a href="http://browsehappy.pl/forum">forum BrowseHappy.pl</a>.</p></dd>
+ </dl>
+
+
+ <h2>Zgodność kodu</h2>
+ <p>Kod został zdeformowany, aby był bardziej zwięzły i łatwiejszy w instalacji. Byłby nieprawidłowy, gdyby nie był ukryty w komentarzu HTML. Komentarz warunkowy całkowicie go ukrywa przed zgodnymi ze standardami przeglądarkami (i walidatorem), a dla ignorującego błędy Internet Explorera jego niepoprawność i tak jest bez znaczenia. IE nie obsługuje XHTML, więc ten kod może być bez zmian umieszczony w XHTML.</p>
+
+ <h2>Licencja</h2>
+
+ <p>Kod jest na <a rel="license" href="http://creativecommons.org/licenses/by-nc/2.0/">licencji Creative Commons</a>. Infobar BrowseHappy jest rozwinięciem kodu Martina Ng i Chinga Yonghana.</p>
+</body>
+</html>

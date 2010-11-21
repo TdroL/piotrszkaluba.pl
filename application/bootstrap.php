@@ -5,7 +5,7 @@
 /**
  * Set the default time zone.
  *
- * @see  http://docs.kohanaphp.com/about.configuration
+ * @see  http://kohanaframework.org/guide/using.configuration
  * @see  http://php.net/timezones
  */
 date_default_timezone_set('Europe/Warsaw');
@@ -13,15 +13,15 @@ date_default_timezone_set('Europe/Warsaw');
 /**
  * Set the default locale.
  *
- * @see  http://docs.kohanaphp.com/about.configuration
+ * @see  http://kohanaframework.org/guide/using.configuration
  * @see  http://php.net/setlocale
  */
-setlocale(LC_ALL, 'pl_PL.utf-8');
+setlocale(LC_ALL, 'pl_PL.UTF-8');
 
 /**
  * Enable the Kohana auto-loader.
  *
- * @see  http://docs.kohanaphp.com/about.autoloading
+ * @see  http://kohanaframework.org/guide/using.autoloading
  * @see  http://php.net/spl_autoload_register
  */
 spl_autoload_register(array('Kohana', 'auto_load'));
@@ -37,43 +37,39 @@ ini_set('unserialize_callback_func', 'spl_autoload_call');
 //-- Configuration and initialization -----------------------------------------
 
 /**
-* Set if the application is in development (FALSE)
-* or if the application is in production (TRUE).
-*/
-!isset($_SERVER['SERVER_NAME']) and $_SERVER['SERVER_NAME'] = 'localhost';
-define('IN_PRODUCTION', $_SERVER['SERVER_NAME'] != 'localhost');
+ * Set if the application is in development (FALSE)
+ * or if the application is in production (TRUE).
+ */
+Kohana::$environment = (Arr::get($_SERVER, 'SERVER_NAME') != 'localhost') ? Kohana::PRODUCTION : Kohana::DEVELOPMENT;
+/**
+ * Display errors only when in development.
+ */
+ini_set('display_errors', Kohana::$environment != Kohana::PRODUCTION);
+
+if(Kohana::$environment == Kohana::PRODUCTION)
+{
+	error_reporting(E_ALL ^ E_NOTICE);
+}
 
 /**
  * Initialize Kohana, setting the default options.
  *
  * The following options are available:
  *
- * - string   base_url    path, and optionally domain, of your application   NULL
- * - string   index_file  name of your index file, usually "index.php"       index.php
- * - string   charset     internal character set used for input and output   utf-8
- * - string   cache_dir   set the internal cache directory                   APPPATH/cache
- * - boolean  errors      enable or disable error handling                   TRUE
- * - boolean  profile     enable or disable internal profiling               TRUE
- * - boolean  caching     enable or disable internal caching                 FALSE
+ * - string   base_url	path, and optionally domain, of your application   NULL
+ * - string   index_file  name of your index file, usually "index.php"	   index.php
+ * - string   charset	 internal character set used for input and output   utf-8
+ * - string   cache_dir   set the internal cache directory				   APPPATH/cache
+ * - boolean  errors	  enable or disable error handling				   TRUE
+ * - boolean  profile	 enable or disable internal profiling			   TRUE
+ * - boolean  caching	 enable or disable internal caching				 FALSE
  */
- 
-if(IN_PRODUCTION)
-{
-	error_reporting(E_ALL ^ E_NOTICE);
-}
-
-Kohana::init
-(
-	array
-	(
-		'base_url' => IN_PRODUCTION ? '/' : '/WIP/morgin/', 
-		'index_file' => FALSE,
-		'profile' => !IN_PRODUCTION, // Disabling profiling if we are in production
-		'caching' => IN_PRODUCTION, // Enable caching if we are in production
-	)
-);
-
-I18n::$lang = 'pl-pl';
+Kohana::init(array(
+	'base_url'   => (Kohana::$environment != Kohana::PRODUCTION) ? '/WIP/portfolio/' : '/',
+	'index_file' => FALSE,
+	'profile' => Kohana::$environment != Kohana::PRODUCTION, // Disabling profiling if we are in production
+	'caching' => Kohana::$environment == Kohana::PRODUCTION, // Enable caching if we are in production
+));
 
 /**
  * Attach the file write to logging. Multiple writers are supported.
@@ -89,210 +85,112 @@ Kohana::$config->attach(new Kohana_Config_File);
  * Enable modules. Modules are referenced by a relative or absolute path.
  */
 Kohana::modules(array(
-	 'firephp'    => MODPATH.'firephp',    // FirePHP library
-	 'auth'       => MODPATH.'auth',       	// Basic authentication
-	 'database'   => MODPATH.'database',   	// Database access
-	 'orm'        => MODPATH.'orm',        	// Object Relationship Mapping
-	 'pagination' => MODPATH.'pagination', 	// Paging of results
-	 'formfields' => MODPATH.'formfields',
+	'patches'    => MODPATH.'patches',
+	'firephp'    => MODPATH.'firephp',	  // FirePHP Log handler
+	'params'     => MODPATH.'params',	  // Params
+	'jelly-torn' => MODPATH.'jelly-torn', // Jelly form generator
+	'jelly'      => MODPATH.'jelly',	  // Sweet ORM
+	'liauth'     => MODPATH.'liauth',	  // Light authentication
+	'cache'      => MODPATH.'cache',	  // Caching with multiple backends
+	'database'   => MODPATH.'database',   // Database access
+	'image'      => MODPATH.'image',	  // Image manipulation
+	'pagination' => MODPATH.'pagination', // Paging of results
 	));
-
-if(is_file(APPPATH.'base.php'))
-{
-	require APPPATH.'base.php';
-}
-
-Kohana::$log->attach(new FirePHP_Log_Console());
 
 /**
  * Set the routes. Each route must have a minimum of a name, a URI and a set of
  * defaults for the URI.
  */
-if (!Route::cache())
+if( ! Route::cache())
 {
-	// ----------- ADMIN ----------- //
-	if(!IN_PRODUCTION)
-	{
-		Route::set('cli', 'cli/<action>')
-			->defaults(array(
-				'controller'	=> 'cli',
-				'action'		=> 'generate',
-			));
-	}
-	
-	Route::set('login', 'admin/login')
-		->defaults(array(
-			'directory'		=> 'protected',
-			'controller'	=> 'main',
-			'action'		=> 'login',
-		));
-	
-	Route::set('logout', 'admin/logout')
-		->defaults(array(
-			'directory'		=> 'protected',
-			'controller'	=> 'main',
-			'action'		=> 'logout',
-		));
-	
-	Route::set('admin-is-logged', 'admin/is_logged')
-		->defaults(array(
-			'directory'		=> 'protected',
-			'controller'	=> 'main',
-			'action'		=> 'is_logged',
-		));
-	
-	Route::set('admin-main', 'admin/main')
-		->defaults(array(
-			'directory'		=> 'protected',
-			'controller'	=> 'main',
-			'action'		=> 'index',
-		));
-	
-	Route::set('logs_list', 'admin/logs/list(/<path>)', 
+	Route::set('category', 'kategoria-<link>(/page-<page>)',
 		array(
-			'path' 			=> '[0-9\/]+(?:\.php)?',
+			'link' => '[a-z0-9\-_]+'
 		))
 		->defaults(array(
-			'directory'		=> 'protected',
-			'controller'	=> 'logs',
-			'action'		=> 'list',
+			'directory'  => 'public',
+			'controller' => 'category',
+			'action'	 => 'index',
 		));
-	
-	Route::set('logs', 'admin/logs(/<path>)', 
+
+	Route::set('project', 'projekt-<link>',
 		array(
-			'path'			=> '[0-9\/]+(?:\.php)?',
+			'link' => '[a-z0-9\-_]+'
 		))
 		->defaults(array(
-			'directory'		=> 'protected',
-			'controller'	=> 'logs',
-			'action'		=> 'index',
+			'directory'  => 'public',
+			'controller' => 'project',
+			'action'	 => 'index',
 		));
-	
-	Route::set('admin', 'admin/<controller>(/<action>(.<id>))(/only/<category>)(/sort/<field>(/<sort>))(/page/<page>)', 
+
+	Route::set('wip', 'wip(/page-<page>)')
+		->defaults(array(
+			'directory'  => 'public',
+			'controller' => 'home',
+			'action'	 => 'wip',
+		));
+
+	Route::set('home', '')
+		->defaults(array(
+			'directory'  => 'public',
+			'controller' => 'home',
+			'action'	 => 'index',
+		));
+
+	Route::set('protected', 'admin(/<controller>(/<action>(/<id>)))')
+		->defaults(array(
+			'directory'  => 'protected',
+			'controller' => 'home',
+			'action'	 => 'index',
+		));
+
+	Route::set('default', '<any>',
 		array(
-			'id'			=> '\d+',
-			'page'			=> '\d+',
-			'field'			=> '[^/]+',
-			'sort'			=> 'desc|asc',
+			'any' => '.*'
 		))
 		->defaults(array(
-			'directory'		=> 'protected',
-			'controller'	=> 'main',
-			'action' 		=> 'index',
-			'id'			=> NULL,
-			'field'			=> NULL,
-			'position'		=> NULL,
-			'category'		=> NULL,
+			'directory'  => 'public',
+			'controller' => 'home',
+			'action'	 => '404',
 		));
-	
-	// ----------- ADMIN - END ----------- //
-	
-	Route::set('images', 'view/<category>(/<page>)', 
-		array(
-			'page'			=> '\d+',
-		))
-		->defaults(array(
-			'directory'		=> 'public',
-			'controller'	=> 'images',
-			'action'		=> 'index',
-			'page'			=> 1,
-		));
-	
-	Route::set('contact', 'contact')
-		->defaults(array(
-			'directory'		=> 'public',
-			'controller'	=> 'pages',
-			'action'		=> 'contact',
-		));
-	
-	Route::set('pages', '<page>', 
-		array(
-			'page'			=> '[^\d].+'
-		))
-		->defaults(array(
-			'directory'		=> 'public',
-			'controller'	=> 'pages',
-			'action'		=> 'index',
-		));
-	
-	Route::set('default', '(<page>)',
-		array(
-			'page'			=> '\d*',
-		))
-		->defaults(array(
-			'directory'		=> 'public',
-			'controller'	=> 'images',
-			'action'		=> 'index',
-			'category'		=> NULL,
-			'page'			=> 1,
-		));
-	
-	// Cache the routes if in production
-	Route::cache(IN_PRODUCTION);
+
+	Route::cache(Kohana::$environment == Kohana::PRODUCTION);
 }
+
 /**
  * Execute the main request. A source of the URI can be passed, eg: $_SERVER['PATH_INFO'].
  * If no source is specified, the URI will be automatically detected.
  */
- 
-
-if(!isset($force_uri))
+if ( ! defined('SUPPRESS_REQUEST'))
 {
-	$force_uri = TRUE;
-}
+	$request = Request::instance();
 
-$request = Request::instance($force_uri);
-$request->headers['Cache-Control'] = 'no-cache, must-revalidate';
-$request->headers['Expires'] = 'Sat, 26 Jul 1997 05:00:00 GMT';
-//$request->headers['Content-Encoding'] = 'gzip';
-
-if(IN_PRODUCTION === TRUE)
-{
 	try
 	{
-		// Attempt to execute the response
-		$request->execute()
-				->send_headers();
+		$request->execute();
+		$request->headers['Etag'] = $request->generate_etag();
 	}
-	catch(Kohana_View_Exception $e)
+	catch(Error404_Exception $e)
 	{
-		// Create a 404 response
-		$request->status = 404;
-		$request->response = new View('public/template');
-		$request->response->content = new View('public/404');
-		$request->response->content->message = $e->getMessage();
+		$request = Request::factory('404')->execute();
 	}
 	catch(Exception $e)
 	{
-		// If there was an internal server error, we should record it for analysis
-		Kohana::$log->add('500', $e.PHP_EOL.'URI: '.$request->uri);
-		$request->status = 500;
-		$request->response = new View('public/template');
-		$request->response->content = new View('public/404');
-		$request->response->content->message = 'error'.$e->getMessage();
+		if(Kohana::$environment != Kohana::PRODUCTION)
+		{
+			throw $e; // re-throw
+		}
+		
+		$request = Request::factory('500')->execute();
 	}
-}
-else
-{
-	// Attempt to execute the response
-	try
+	echo $request->send_headers()->response;
+
+	if(Kohana::$environment != Kohana::PRODUCTION)
 	{
-		$request->execute()
-				->send_headers();
-	}
-	catch(Exception $e)
-	{
-		Kohana::$log->add('Exception', $e);
-		throw $e;
+		FirePHP_Profiler::instance()
+						->superglobals()
+						->database()
+						->benchmark();
 	}
 }
 
-echo $request->response;
-
-if(defined('ADMIN_LOGGED') and class_exists('FirePHP_Profiler'))
-{
-	FirePHP_Profiler::instance()
-		->superglobals()
-		->database()
-		->benchmark();
-}

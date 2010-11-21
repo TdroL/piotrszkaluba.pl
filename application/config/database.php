@@ -1,16 +1,27 @@
-<?php defined('SYSPATH') OR die('No direct access allowed.');
+<?php defined('SYSPATH') or die('No direct access allowed.');
 
-$_database =  array
+return array
 (
 	'default' => array
 	(
 		'type'       => 'mysql',
 		'connection' => array(
+			/**
+			 * The following options are available for MySQL:
+			 *
+			 * string   hostname     server hostname, or socket
+			 * string   database     database name
+			 * string   username     database username
+			 * string   password     database password
+			 * boolean  persistent   use persistent connections?
+			 *
+			 * Ports and sockets may be appended to the hostname.
+			 */
 			'hostname'   => 'localhost',
+			'database'   => 'portfolio',
 			'username'   => 'root',
 			'password'   => FALSE,
 			'persistent' => FALSE,
-			'database'   => 'morgin',
 		),
 		'table_prefix' => '',
 		'charset'      => 'utf8',
@@ -18,27 +29,30 @@ $_database =  array
 		'profiling'    => TRUE,
 	),
 	'alternate' => array(
-		'type'       => 'mysql',
+		'type'       => 'pdo',
 		'connection' => array(
-			'hostname'   => '***',
-			'username'   => '***',
-			'password'   => '***',
+			/**
+			 * The following options are available for PDO:
+			 *
+			 * string   dsn         Data Source Name
+			 * string   username    database username
+			 * string   password    database password
+			 * boolean  persistent  use persistent connections?
+			 */
+			'dsn'        => 'mysql:host=localhost;dbname=kohana',
+			'username'   => 'root',
+			'password'   => 'r00tdb',
 			'persistent' => FALSE,
-			'database'   => '***',
 		),
+		/**
+		 * The following extra options are available for PDO:
+		 *
+		 * string   identifier  set the escaping identifier
+		 */
 		'table_prefix' => '',
 		'charset'      => 'utf8',
 		'caching'      => FALSE,
-		'profiling'    => FALSE,
+		'profiling'    => TRUE,
 	),
 );
 
-if(IN_PRODUCTION)
-{
-	$_tmp = $_database['default'];
-	$_database['default'] = $_database['alternate'];
-	$_database['alternate'] = $_tmp;
-	unset($_tmp);
-}
-
-return $_database;

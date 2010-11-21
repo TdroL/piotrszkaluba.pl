@@ -4,15 +4,24 @@ RewriteEngine On
 # Installation directory
 RewriteBase /WIP/morgin/
 
-
 # Protect hidden files from being viewed
 <Files .*>
 	Order Deny,Allow
 	Deny From All
 </Files>
 
+# Force without WWW
+RewriteCond %{HTTP_HOST} ^www.(.*) [NC]
+RewriteRule ^(.*)$ http://%1/$1 [R=301,NC,L]
+
+# Force to exclude the trailing slash
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} (.*)/$
+RewriteRule ^(.*)/$ $1 [R=301,NC,L] 
+
 # Protect application and system files from being viewed
-RewriteRule ^(?:application|modules|system)\b - [F,L]
+RewriteRule ^(?:application|modules|system)\b.* index.php/$0 [L]
 
 # Allow any files or directories that exist to be displayed directly
 RewriteCond %{REQUEST_FILENAME} !-f
