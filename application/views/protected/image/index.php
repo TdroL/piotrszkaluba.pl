@@ -33,11 +33,6 @@
 			<span>Atrybuty HTML:</span>
 			<span><?php echo nl2br($image->attributes) ?></span>
 		</div>
-		
-		<div>
-			<span>Opis:</span>
-			<span><?php echo Text::limit_words(Html::chars(strip_tags($image->description)), 15) ?></span>
-		</div>
 	</article>
 	<?php endforeach ?>
 	<?php else: ?>

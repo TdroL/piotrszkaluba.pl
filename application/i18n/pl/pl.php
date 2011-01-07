@@ -1,6 +1,8 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 
 return array(
+	'My works' => 'Moje prace',
+	
 	// date
 	'January'	=> 'Styczeń',
 	'February'	=> 'Luty',
@@ -18,6 +20,7 @@ return array(
 	// uploader
 	'All files'	=> 'Wszystkie pliki',
 	'Cancel'	=> 'Anuluj',
+	'Delete'	=> 'Usuń',
 	'Done'		=> 'Ukończono',
 	'Error'		=> 'Wystapił błąd',
 	'Select file'		=> 'Wybierz plik',

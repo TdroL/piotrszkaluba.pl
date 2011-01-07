@@ -18,11 +18,6 @@
 		<?php echo nl2br($form->attributes->value()) ?>
 	</p>
 	
-	<p>
-		<?php echo $form->description->label() ?>
-		<?php echo $form->description->value() ?>
-	</p>
-	
 	<p class="submit">
 		<?php echo Form::submit('send', 'Usuń') ?>
 	</p>

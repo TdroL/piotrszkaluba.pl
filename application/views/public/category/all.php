@@ -1,8 +1,8 @@
 <?php defined('SYSPATH') or die('No direct script access.'); ?>
-
-	<h2><?php echo $category->title ?></h2>
+	
+	<h2>Moje prace</h2>
 	<section class="gallery">
-		<?php foreach($category->get('projects')->paginate()->execute() as $project): ?>
+		<?php foreach($projects->paginate()->execute() as $project): ?>
 		<article class="box">
 			<a href="<?php echo Route::url('project', array('link' => $project->link)) ?>" title="Zobacz: <?php echo $project->category->title.' - '.$project->name ?>"><img src="<?php echo Url::site('media/files/'.$project->file) ?>" alt="<?php echo $project->name ?>" /></a>
 			<div class="desc" title="<?php echo Html::chars(strip_tags($project->description)) ?>">
@@ -12,4 +12,4 @@
 		</article>
 		<?php endforeach ?>
 	</section>
-	<?php echo $category->get('projects')->pagination() ?>
+	<?php echo $projects->pagination() ?>

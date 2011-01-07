@@ -11,15 +11,12 @@ class Controller_Public extends Controller_Kohana_Public
 			$this->template->set_global('ftime_short', '%d.%m.%Y');
 			$this->template->set_global('ftime_long', '%d.%m.%Y, %H:%M');
 			
-			if($this->request->directory == 'public')
-			{
-				$this->template->latest = Jelly::select('image')->latest();
-				$this->template->wips = Jelly::select('category')->link('wip')->load();	
-			}
+			$this->template->title = empty($this->template->title) ? 'Piotr Szkałuba - Portfolio' : $this->template->title;
 			
 			$this->template->categories = Jelly::select('category');
-			$this->template->title = empty($this->template->title) ? 'Piotr Szkałuba - Portfolio' : $this->template->title;
+			$this->template->show_categories = ($this->request->controller != 'home');
 		}
+		
 		parent::after();
 	}
 }

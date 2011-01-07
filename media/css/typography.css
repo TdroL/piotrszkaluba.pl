@@ -17,6 +17,16 @@ table, caption, tbody, tfoot, thead, tr, th, td ,hr{
   vertical-align: baseline;
 }
 
+header,
+footer,
+aside,
+nav,
+article,
+section,
+hgroup {
+	display: block;
+}
+
 a img { border: none; }
 
 

@@ -264,7 +264,9 @@ input, textarea {
 	font-weight: bold;
 }
 
-#container .form span label {
+#container .form span label,
+#container .form div.uploader-delete-old label,
+#container .form div.uploader-delete-cache label {
 	display: inline;
 	float: none;
 	width: auto;
@@ -281,6 +283,10 @@ input, textarea {
 #container .form input[type=text],
 #container .form input[type=password] {
 	width: 292px;
+}
+
+#container .form input[type=checkbox] {
+	vertical-align: bottom;
 }
 
 #container .form textarea {

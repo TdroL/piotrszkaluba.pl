@@ -19,6 +19,3 @@
 [submodule "modules/jelly"]
 	path = modules/jelly
 	url = http://github.com/jonathangeiger/kohana-jelly.git
-[submodule "modules/firephp"]
-	path = modules/firephp
-	url = http://github.com/jeremyf76/KO3_FirePHP.git

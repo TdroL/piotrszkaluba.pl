@@ -42,11 +42,6 @@
 		<?php echo $form->category->value()->name ?>
 	</p>
 	
-	<p>
-		<?php echo $form->source->label() ?>
-		<?php echo $form->source->value() ? Html::anchor($form->source->value()) : 'Brak' ?>
-	</p>
-	
 	<p class="submit">
 		<?php echo Form::submit('send', 'Usuń') ?>
 	</p>

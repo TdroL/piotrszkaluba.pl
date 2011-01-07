@@ -65,7 +65,7 @@ if(Kohana::$environment == Kohana::PRODUCTION)
  * - boolean  caching	 enable or disable internal caching				 FALSE
  */
 Kohana::init(array(
-	'base_url'   => (Kohana::$environment != Kohana::PRODUCTION) ? '/WIP/portfolio/' : '/',
+	'base_url'   => (Kohana::$environment != Kohana::PRODUCTION) ? '/WIP/piotrszkaluba.pl/' : '/',
 	'index_file' => FALSE,
 	'profile' => Kohana::$environment != Kohana::PRODUCTION, // Disabling profiling if we are in production
 	'caching' => Kohana::$environment == Kohana::PRODUCTION, // Enable caching if we are in production
@@ -86,7 +86,6 @@ Kohana::$config->attach(new Kohana_Config_File);
  */
 Kohana::modules(array(
 	'patches'    => MODPATH.'patches',
-	'firephp'    => MODPATH.'firephp',	  // FirePHP Log handler
 	'params'     => MODPATH.'params',	  // Params
 	'jelly-torn' => MODPATH.'jelly-torn', // Jelly form generator
 	'jelly'      => MODPATH.'jelly',	  // Sweet ORM
@@ -95,7 +94,7 @@ Kohana::modules(array(
 	'database'   => MODPATH.'database',   // Database access
 	'image'      => MODPATH.'image',	  // Image manipulation
 	'pagination' => MODPATH.'pagination', // Paging of results
-	));
+));
 
 /**
  * Set the routes. Each route must have a minimum of a name, a URI and a set of
@@ -103,6 +102,13 @@ Kohana::modules(array(
  */
 if( ! Route::cache())
 {
+	Route::set('view-all', 'zobacz-wszystkie(/page-<page>)')
+		->defaults(array(
+			'directory'  => 'public',
+			'controller' => 'category',
+			'action'	 => 'all',
+		));
+		
 	Route::set('category', 'kategoria-<link>(/page-<page>)',
 		array(
 			'link' => '[a-z0-9\-_]+'
@@ -130,6 +136,13 @@ if( ! Route::cache())
 			'action'	 => 'wip',
 		));
 
+	Route::set('contact', 'kontakt')
+		->defaults(array(
+			'directory'  => 'public',
+			'controller' => 'home',
+			'action'	 => 'contact',
+		));
+
 	Route::set('home', '')
 		->defaults(array(
 			'directory'  => 'public',
@@ -142,6 +155,20 @@ if( ! Route::cache())
 			'directory'  => 'protected',
 			'controller' => 'home',
 			'action'	 => 'index',
+		));
+
+	Route::set('500', '500')
+		->defaults(array(
+			'directory'  => 'public',
+			'controller' => 'home',
+			'action'	 => '500',
+		));
+
+	Route::set('404', '404')
+		->defaults(array(
+			'directory'  => 'public',
+			'controller' => 'home',
+			'action'	 => '404',
 		));
 
 	Route::set('default', '<any>',
@@ -176,7 +203,7 @@ if ( ! defined('SUPPRESS_REQUEST'))
 	}
 	catch(Exception $e)
 	{
-		if(Kohana::$environment != Kohana::PRODUCTION)
+		if(Kohana::$environment !== Kohana::PRODUCTION)
 		{
 			throw $e; // re-throw
 		}
@@ -184,13 +211,5 @@ if ( ! defined('SUPPRESS_REQUEST'))
 		$request = Request::factory('500')->execute();
 	}
 	echo $request->send_headers()->response;
-
-	if(Kohana::$environment != Kohana::PRODUCTION)
-	{
-		FirePHP_Profiler::instance()
-						->superglobals()
-						->database()
-						->benchmark();
-	}
 }
 

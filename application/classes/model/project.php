@@ -28,6 +28,7 @@ class Model_Project extends Jelly_Model
 				'file' => new Field_File(array(
 					'label' => 'Plik',
 					'path' => 'media/files',
+					'delete_old_file' => TRUE,
 					'rules' => array(
 						'Upload::not_empty' => NULL,
 						'Upload::type' => array(array('jpg', 'png', 'gif')),

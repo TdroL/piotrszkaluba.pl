@@ -16,5 +16,14 @@ class Controller_Public_Category extends Controller_Public
 		$this->template->title = $category->title;
 		$this->template->keywords = $category->keywords;
 	}
+	
+	public function action_all(Params $param)
+	{
+		$this->content->bind('projects', $projects);
+		
+		$projects = Jelly::select('project');
+		
+		$this->template->title = __('My works');
+	}
 }
 

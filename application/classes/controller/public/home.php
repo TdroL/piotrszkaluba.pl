@@ -5,8 +5,10 @@ class Controller_Public_Home extends Controller_Public
 	public function action_index(Params $param)
 	{
 		$this->content->bind('project', $project);
+		$this->content->bind('categories', $categories);
 
 		$project = Jelly::select('project')->latest();
+		$categories = Jelly::select('category');
 	}
 	
 	public function action_404(Params $param)
@@ -34,6 +36,11 @@ class Controller_Public_Home extends Controller_Public
 		$this->template->keywords = $category->keywords;
 
 		$projects = Jelly::select('project')->wips();
+	}
+	
+	public function action_contact(Params $param)
+	{
+		
 	}
 }
 

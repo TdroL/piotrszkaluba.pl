@@ -11,4 +11,9 @@ class Model_Builder_Image extends Jelly_Builder
 	{
 		return $this->order_by('date', 'desc')->load();
 	}
+	
+	public function oldest()
+	{
+		return $this->order_by('date', 'asc')->load();
+	}
 }

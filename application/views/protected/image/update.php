@@ -19,11 +19,6 @@
 		<?php echo $form->attributes->input() ?>
 	</p>
 	
-	<p>
-		<?php echo $form->description->label() ?>
-		<?php echo $form->description->input() ?>
-	</p>
-	
 	<p class="submit">
 		<?php echo Form::submit('send', 'Zatwierdź zmiany') ?>
 	</p>
