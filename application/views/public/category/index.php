@@ -1,15 +1,19 @@
 <?php defined('SYSPATH') or die('No direct script access.'); ?>
 
-	<h2><?php echo $category->title ?></h2>
-	<section class="gallery">
-		<?php foreach($category->get('projects')->paginate()->execute() as $project): ?>
-		<article class="box">
-			<a href="<?php echo Route::url('project', array('link' => $project->link)) ?>" title="Zobacz: <?php echo $project->category->title.' - '.$project->name ?>"><img src="<?php echo Url::site('media/files/'.$project->file) ?>" alt="<?php echo $project->name ?>" /></a>
-			<div class="desc" title="<?php echo Html::chars(strip_tags($project->description)) ?>">
-				<b><?php echo $project->name ?></b>
-				<p><?php echo Text::limit_words(strip_tags($project->description), 5) ?></p>
-			</div>
-		</article>
-		<?php endforeach ?>
-	</section>
-	<?php echo $category->get('projects')->pagination() ?>
+	<aside>
+		<h2 class="hidden">Dostępne prace</h2>
+
+		<span class="nav-up inactive"></span>
+		<div id="side-nav">
+			<ol>
+			<?php foreach($category->projects as $project): ?>
+				<li><a href="<?php echo Route::url('project', array('link' => $project->link)) ?>" title="Zobacz: <?php echo $project->name ?>"><?php echo $project->name ?></a></li>
+			<?php endforeach ?>
+			</ol>
+		</div>
+		<span class="nav-down inactive"></span>
+	</aside>
+
+	<article>
+		<h1><?php echo $category->title ?></h1>
+	</article>

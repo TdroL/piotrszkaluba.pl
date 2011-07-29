@@ -15,8 +15,9 @@ class Controller_Public_Project extends Controller_Public
 		{
 			throw new Error404_Exception;
 		}
-		
+
 		$this->template->title = $project->name.' - '.$project->category->title;
 		$this->template->keywords = $project->keywords;
+		$this->template->active = array('portfolio' => ' class="active"');
 	}
 }

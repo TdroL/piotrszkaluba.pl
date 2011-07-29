@@ -40,7 +40,8 @@ ini_set('unserialize_callback_func', 'spl_autoload_call');
  * Set if the application is in development (FALSE)
  * or if the application is in production (TRUE).
  */
-Kohana::$environment = (Arr::get($_SERVER, 'SERVER_NAME') != 'localhost') ? Kohana::PRODUCTION : Kohana::DEVELOPMENT;
+Kohana::$environment = constant('Kohana::'.strtoupper(
+	Arr::get($_SERVER, 'KOHANA_ENV', 'PRODUCTION')));
 /**
  * Display errors only when in development.
  */
@@ -65,7 +66,7 @@ if(Kohana::$environment == Kohana::PRODUCTION)
  * - boolean  caching	 enable or disable internal caching				 FALSE
  */
 Kohana::init(array(
-	'base_url'   => (Kohana::$environment != Kohana::PRODUCTION) ? '/WIP/piotrszkaluba.pl/' : '/',
+	'base_url'   => (Kohana::$environment != Kohana::PRODUCTION) ? '/wip/piotrszkaluba.pl/' : '/',
 	'index_file' => FALSE,
 	'profile' => Kohana::$environment != Kohana::PRODUCTION, // Disabling profiling if we are in production
 	'caching' => Kohana::$environment == Kohana::PRODUCTION, // Enable caching if we are in production
@@ -94,6 +95,7 @@ Kohana::modules(array(
 	'database'   => MODPATH.'database',   // Database access
 	'image'      => MODPATH.'image',	  // Image manipulation
 	'pagination' => MODPATH.'pagination', // Paging of results
+	'yaminify'   => MODPATH.'yaminify',   // yaminify
 ));
 
 /**
@@ -108,7 +110,7 @@ if( ! Route::cache())
 			'controller' => 'category',
 			'action'	 => 'all',
 		));
-		
+
 	Route::set('category', 'kategoria-<link>(/page-<page>)',
 		array(
 			'link' => '[a-z0-9\-_]+'
@@ -207,7 +209,7 @@ if ( ! defined('SUPPRESS_REQUEST'))
 		{
 			throw $e; // re-throw
 		}
-		
+
 		$request = Request::factory('500')->execute();
 	}
 	echo $request->send_headers()->response;

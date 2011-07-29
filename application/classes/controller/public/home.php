@@ -9,8 +9,9 @@ class Controller_Public_Home extends Controller_Public
 
 		$project = Jelly::select('project')->latest();
 		$categories = Jelly::select('category');
+		$this->template->active = array('home' => ' class="active"');
 	}
-	
+
 	public function action_404(Params $param)
 	{
 		$this->request->status = 404;
@@ -19,7 +20,7 @@ class Controller_Public_Home extends Controller_Public
 	{
 		$this->request->status = 500;
 	}
-	
+
 	public function action_wip(Params $param)
 	{
 		$this->content->bind('category', $category);
@@ -31,16 +32,17 @@ class Controller_Public_Home extends Controller_Public
 		{
 			throw new Error404_Exception;
 		}
-		
+
 		$this->template->title = $category->title;
 		$this->template->keywords = $category->keywords;
 
 		$projects = Jelly::select('project')->wips();
+		$this->template->active = array('portfolio' => ' class="active"');
 	}
-	
+
 	public function action_contact(Params $param)
 	{
-		
+		$this->template->active = array('contact' => ' class="active"');
 	}
 }
 

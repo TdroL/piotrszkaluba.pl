@@ -1,3 +1,9 @@
 <?php defined('SYSPATH') or die('No direct script access.'); ?>
-	
-<img  class="error" src="<?php echo Url::site('media/images/icons/404.png') ?>" alt="404 error" />
+
+	<article>
+		<h1>Brak takiej strony</h1>
+
+		<div class="underlay">
+			<p>Niestety tu nie ma takiej strony :(</p>
+		</div>
+	</article>

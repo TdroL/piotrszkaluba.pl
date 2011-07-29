@@ -6,12 +6,12 @@ abstract class Controller_Protected extends Controller_Public
 	public $redirect_url = 'admin/project';
 	public $login_url = 'admin/home/login';
 	public $auth = NULL;
-	
+
 	public function before()
 	{
 		parent::before();
 		$this->auth = Liauth::instance();
-		
+
 		if(is_object($this->template))
 		{
 			$this->template->bind_global('auth', $this->auth);
@@ -19,9 +19,9 @@ abstract class Controller_Protected extends Controller_Public
 
 		if(in_array($this->request->action, $this->allow))
 		{
-			return;			
+			return;
 		}
-		
+
 		if($this->auth->logged_in())
 		{
 			if(!$this->auth->user->active)

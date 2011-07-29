@@ -1,16 +1,19 @@
 <?php defined('SYSPATH') or die('No direct script access.'); ?>
 
+	<aside>
+		<h2 class="hidden">Dostępne prace</h2>
+
+		<span class="nav-up inactive"></span>
+		<div id="side-nav">
+			<ol>
+			<?php foreach($projects->execute() as $project): ?>
+				<li><a href="<?php echo Route::url('project', array('link' => $project->link)) ?>" title="Zobacz: <?php echo $project->name ?>"><?php echo $project->name ?></a></li>
+			<?php endforeach ?>
+			</ol>
+		</div>
+		<span class="nav-down inactive"></span>
+	</aside>
+
+	<article>
 		<h1><?php echo $category->title ?></h1>
-
-		<?php foreach($projects->paginate()->execute() as $project): ?>
-		<article class="project">
-			<section>
-				<h2><?php echo $project->name ?></h2>
-				<p><?php echo $project->description ?></p>
-				<p><a href="<?php echo Route::url('project', array('link' => $project->link)) ?>" title="Zobacz: <?php echo $project->name ?>">(Więcej)</a></p>
-			</section>
-			<a href="<?php echo Route::url('project', array('link' => $project->link)) ?>" title="Zobacz: <?php echo $project->name ?>"><img src="<?php echo Url::site('media/files/'.$project->file) ?>" alt="komraf" /></a>
-		</article>
-		<?php endforeach ?>
-
-		<?php echo $projects->pagination() ?>
+	</article>

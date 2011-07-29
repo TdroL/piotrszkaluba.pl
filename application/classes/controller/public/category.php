@@ -12,18 +12,20 @@ class Controller_Public_Category extends Controller_Public
 		{
 			throw new Error404_Exception;
 		}
-		
+
 		$this->template->title = $category->title;
 		$this->template->keywords = $category->keywords;
+		$this->template->active = array('portfolio' => ' class="active"');
 	}
-	
+
 	public function action_all(Params $param)
 	{
 		$this->content->bind('projects', $projects);
-		
+
 		$projects = Jelly::select('project');
-		
+
 		$this->template->title = __('My works');
+		$this->template->active = array('portfolio' => ' class="active"');
 	}
 }
 
