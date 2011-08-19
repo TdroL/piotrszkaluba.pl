@@ -95,7 +95,6 @@ Kohana::modules(array(
 	'database'   => MODPATH.'database',   // Database access
 	'image'      => MODPATH.'image',	  // Image manipulation
 	'pagination' => MODPATH.'pagination', // Paging of results
-	'yaminify'   => MODPATH.'yaminify',   // yaminify
 ));
 
 /**

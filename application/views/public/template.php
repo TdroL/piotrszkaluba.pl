@@ -3,9 +3,7 @@
 <html class="no-js" lang="pl">
 <head>
 	<meta charset="utf-8">
-
-	<title><?php echo $title ?>  - www.piotrszkaluba.pl</title>
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title><?php echo $title ?> - www.piotrszkaluba.pl</title>
 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -15,9 +13,10 @@
 
 	<meta name="google-site-verification" content="QvhaE1tHtabUOYzuTv-rCyXZBAb3rTWVyPfsTFp3dPI" />
 
-	<link rel="stylesheet" href="<?php echo Url::stamp('media/css/style.min.css') ?>" />
+	<link rel="stylesheet" href="<?php echo Url::site('media/css/style.css') ?>" />
+	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300&amp;subset=latin,latin-ext">
 
-	<!--<script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>-->
+	<script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
 	<script>
 		window.Modernizr ||
 		document.write('<script src="<?php echo Url::site('media/js/modernizr-2.0.6-full.min.js') ?>"><\/script>')
@@ -56,25 +55,25 @@ Internet Explorer nie potrafi poprawnie wyświetlić tej strony. Kliknij tutaj, 
 			Kopiowanie, modyfikacja, publikowanie, rozpowszechnianie oraz wykorzystywanie na jakimkowliek polu eksploatacji i w jakiejkolwiek formie wszystkich materialow i tresci zamieszczonych na tej stronie bez uprzedniej pisemnej zgody autora jest zabronione.
 		</footer>
 	</div>
-	<!--
+
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
-	-->
 	<script>
 		window.jQuery ||
 		document.write('<script src="<?php echo Url::site('media/js/jquery-1.6.2.min.js') ?>"><\/script>')
 	</script>
 	<script>
-		yepnope(['<?php echo Url::stamp('media/js/jquery.color.min.js') ?>',
-				 '<?php echo Url::stamp('media/js/effect.top-menu.min.js') ?>',
-				 '<?php echo Url::stamp('media/js/effect.side-nav.min.js') ?>',
-				 '<?php echo Url::stamp('media/js/ajax.top-menu.min.js') ?>',
-				 '<?php echo Url::stamp('media/js/ajax.side-nav.min.js') ?>',
-				 '<?php echo Url::stamp('media/js/ajax.pop-state.min.js') ?>'
+		yepnope(['<?php echo Url::site('media/js/jquery.color.js') ?>',
+				 '<?php echo Url::site('media/js/effect.top-menu.js') ?>',
+				 '<?php echo Url::site('media/js/effect.side-nav.js') ?>',
+				 '<?php echo Url::site('media/js/ajax.top-menu.js') ?>',
+				 '<?php echo Url::site('media/js/ajax.side-nav.js') ?>',
+				 '<?php echo Url::site('media/js/ajax.pop-state.js') ?>'
 		]);
 
-	<?php if (Kohana::$environment != Kohana::PRODUCTION): ?>
+	<?php if (Kohana::$environment == Kohana::PRODUCTION): ?>
 		var _gaq=[['_setAccount','UA-8543542-1'],['_trackPageview'],['_trackPageLoadTime']];(function(d,t,g,s){g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.async=1;g.src=(/^https:/.test(location)?'//ssl':'//www')+'.google-analytics.com/ga.js';s.parentNode.insertBefore(g,s)}(document,'script'));
 	<?php endif ?>
+
 	</script>
 </body>
 </html>

@@ -19,6 +19,4 @@
 [submodule "modules/jelly"]
 	path = modules/jelly
 	url = http://github.com/jonathangeiger/kohana-jelly.git
-[submodule "modules/yaminify"]
-	path = modules/yaminify
-	url = git://github.com/TdroL/kohana-yaminify.git
+
