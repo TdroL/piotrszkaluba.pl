@@ -79,7 +79,8 @@ window.jQuery && jQuery(function($, undefined) {
 
 		$side_nav.find('a')
 		.bind('click.effect', function() {
-			$(this).closest('li').addClass('active')
+			$(this).trigger('focusin.effect')
+				.closest('li').addClass('active')
 				.siblings().removeClass('active');
 		})
 		.bind('focusin.effect', function() {
