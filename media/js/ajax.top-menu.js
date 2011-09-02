@@ -7,7 +7,7 @@ window.GLOBALS = window.GLOBALS || {
 window.jQuery && jQuery(function($, undefined) {
 
 	var $nav = $('header').find('nav'),
-		$a = $nav.find('a').not(':has(+ div)'),
+		$a = $nav.find('a'),
 		$main = $('#main'),
 		duration = 100;
 

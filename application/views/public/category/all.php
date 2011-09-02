@@ -17,7 +17,7 @@
 
 	<?php if (isset($first)): ?>
 	<article>
-		<h1>Wszystkie prace - <?php echo $first->name ?></h1>
+		<h1><?php echo $first->category->name ?> - <?php echo $first->name ?></h1>
 		<p><?php echo $first->description ?></p>
 
 		<div class="underlay">
